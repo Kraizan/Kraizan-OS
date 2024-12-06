@@ -27,7 +27,7 @@ const Taskbar = () => {
   });
 
   return (
-    <div className="w-full h-16 fixed bottom-0 mx-auto bg-taskbar px-5 flex items-end justify-between">
+    <div className="w-full h-16 mx-auto bg-taskbar px-5 flex items-end justify-between">
       <div
         className="self-center hover:cursor-pointer opacity-85 active:opacity-100"
         onClick={minimizeAllApps}
