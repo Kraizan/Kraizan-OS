@@ -9,8 +9,8 @@ export interface ExplorerState {
 
 export const useExplorerState = () => {
   const [state, setState] = useState<ExplorerState>({
-    currentPath: '/',
-    history: ['/'],
+    currentPath: '/Home',
+    history: ['/Home'],
     historyIndex: 0,
   });
 
@@ -48,6 +48,9 @@ export const useExplorerState = () => {
     const parts = path.split('/').filter(Boolean);
     let folder = folderStructure.root;
     for (const part of parts) {
+      if (!folder.children[part]) {
+        return null;
+      }
       folder = folder.children[part];
     }
     return folder;
@@ -55,8 +58,8 @@ export const useExplorerState = () => {
 
   const resetExplorerState = () => {
     setState({
-      currentPath: '/',
-      history: ['/'],
+      currentPath: '/Home',
+      history: ['/Home'],
       historyIndex: 0,
     });
   };
@@ -67,6 +70,6 @@ export const useExplorerState = () => {
     goBack,
     goForward,
     getFolder,
-    resetExplorerState
+    resetExplorerState,
   };
 };

@@ -8,7 +8,8 @@ export default {
     extend: {
       colors: {
         background: {
-          DEFAULT: '#e2e2e2',
+          DEFAULT: '#f2f2f2',
+          dark: '#e3e3e3',
         },
         taskbar: {
           DEFAULT: 'rgba(0, 0, 0, 0.6)',

@@ -35,7 +35,7 @@ const Taskbar = () => {
         <img src="/assets/home.png" alt="home" className="w-12 h-12" />
       </div>
       <div className="max-w-max mx-auto">
-        <div className="flex justify-center gap-x-2 px-0.5">
+        <div className="flex justify-center gap-x-3 px-0.5">
           <TaskbarApp appName="terminal" />
           <TaskbarApp appName="explorer" />
           <TaskbarApp appName="browser" />
