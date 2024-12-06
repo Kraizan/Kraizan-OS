@@ -1,16 +1,16 @@
 import { useAppContext } from '@/context/AppContext';
 
 const OpenedApps = () => {
-  const { openedApps, closeApp } = useAppContext();
+  const { openedApps, closeApp, minimized } = useAppContext();
 
-  if (openedApps.length === 0) {
+  if (openedApps.length === 0 || minimized) {
     return null;
   }
 
   const currentApp = openedApps[openedApps.length - 1];
 
   return (
-    <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-85 flex flex-col">
+    <div className="w-full h-full bg-black bg-opacity-85 flex flex-col">
       <div className="flex justify-end p-2">
         <button onClick={closeApp} className="bg-red-500 text-white px-4 py-2 rounded">
           Close
