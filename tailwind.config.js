@@ -11,7 +11,6 @@ export default {
         },
         taskbar: {
           DEFAULT: 'rgba(0, 0, 0, 0.6)',
-          appholder: 'rgba(200, 200, 200)',
         }
       },
       backgroundImage: {

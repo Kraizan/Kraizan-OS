@@ -1,12 +1,15 @@
-import { BrowserRouter, Outlet, Route, Routes } from "react-router";
 import Taskbar from "./components/taskbar";
-import Explorer from "./components/explorer";
+import { AppProvider } from "@/context/AppContext";
+import OpenedApps from "@/components/OpenedApps";
 
 const App = () => {
   return (
-    <main className="w-full h-screen bg-wallpaper bg-cover">
-      <Taskbar />
-    </main>
+    <AppProvider>
+      <main className="w-full h-screen bg-wallpaper bg-cover relative">
+        <OpenedApps />
+        <Taskbar />
+      </main>
+    </AppProvider>
   );
 };
 
