@@ -1,8 +1,9 @@
 import { useAppContext } from "@/context/AppContext";
 import { folderStructure } from "@/data/folderStructure";
+import React from 'react';
 
 const Explorer = () => {
-  const { explorerState, navigateTo, goBack, goForward, getFolder } =
+  const { explorerState, navigateTo, goBack, goForward, getFolder, openDocument } =
     useAppContext();
   const { currentPath, history, historyIndex } = explorerState;
 
@@ -14,8 +15,17 @@ const Explorer = () => {
     );
   }
 
+  const handleItemClick = (item: any) => {
+    if (item.type === 'file') {
+      openDocument(item.content);
+    } else {
+      navigateTo(item.path);
+    }
+  };
+
   return (
     <div className="w-full h-full flex flex-col bg-background-dark">
+      {/* Breadcrumb Navigation */}
       <div className="w-full flex items-center px-4 py-2">
         <button onClick={goBack} disabled={historyIndex === 0} className="mr-2">
           &#129136; Back
@@ -32,9 +42,8 @@ const Explorer = () => {
             .split("/")
             .filter(Boolean)
             .map((part, index, arr) => (
-              <>
+              <React.Fragment key={index}>
                 <span
-                  key={index}
                   className="cursor-pointer hover:underline hover:underline-offset-2 mx-2"
                   onClick={() =>
                     navigateTo("/" + arr.slice(0, index + 1).join("/"))
@@ -43,11 +52,14 @@ const Explorer = () => {
                   {index === 0 ? "Home" : part}
                 </span>
                 <span>{index < arr.length - 1 && "\t>\t"}</span>
-              </>
+              </React.Fragment>
             ))}
         </div>
       </div>
+
+      {/* Explorer Content */}
       <div className="flex h-full space-x-2 px-2">
+        {/* Sidebar */}
         <div className="w-1/5 bg-background p-4 rounded-lg">
           <h2 className="font-bold">Home</h2>
           <ul>
@@ -55,7 +67,7 @@ const Explorer = () => {
               (folder: any) => (
                 <li
                   key={folder.path}
-                  className="cursor-pointer flex items-center gap-2"
+                  className="cursor-pointer flex items-center gap-2 hover:bg-background-dark p-2 rounded"
                   onClick={() => navigateTo(folder.path)}
                 >
                   <img
@@ -63,28 +75,32 @@ const Explorer = () => {
                     alt={folder.name}
                     className="w-8 h-8"
                   />
-                  <p className="">{folder.name}</p>
+                  <p>{folder.name}</p>
                 </li>
               )
             )}
           </ul>
         </div>
+
+        {/* Main Content */}
         <div className="w-4/5 flex flex-col bg-background rounded-lg">
           <div className="flex-grow p-4">
-            <h2 className="font-bold">{currentFolder.name}</h2>
+            <h2 className="font-bold mb-4">{currentFolder.name}</h2>
             <ul className="flex flex-wrap gap-6">
-              {Object.values(currentFolder.children).map((folder: any) => (
+              {Object.values(currentFolder.children).map((item: any) => (
                 <li
-                  key={folder.path}
-                  className="cursor-pointer text-center hover:bg-background-dark px-5 py-2"
-                  onClick={() => navigateTo(folder.path)}
+                  key={item.path}
+                  className="cursor-pointer text-center hover:bg-background-dark px-5 py-2 rounded transition-colors"
+                  onClick={() => handleItemClick(item)}
                 >
                   <img
-                    src={folder.image}
-                    alt={folder.name}
-                    className="w-20 h-20 mx-auto"
+                    src={item.type === 'file' ? '/assets/file.png' : item.image}
+                    alt={item.name}
+                    className={`w-20 h-20 mx-auto mb-2 ${
+                      item.type === 'file' ? '' : 'hover:scale-105 transition-transform'
+                    }`}
                   />
-                  <p>{folder.name}</p>
+                  <p>{item.name}</p>
                 </li>
               ))}
             </ul>

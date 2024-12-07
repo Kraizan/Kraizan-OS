@@ -16,6 +16,11 @@ interface AppContextType {
   goBack: () => void;
   goForward: () => void;
   getFolder: (path: string) => any;
+
+  // Document Viewer state
+  currentDocument: string | null;
+  openDocument: (content: string) => void;
+  closeDocument: () => void;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -23,6 +28,7 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 export const AppProvider = ({ children }: { children: ReactNode }) => {
   const [openedApps, setOpenedApps] = useState<string[]>([]);
   const [minimized, setMinimized] = useState<boolean>(false);
+  const [currentDocument, setCurrentDocument] = useState<string | null>(null);
   const {
     state: explorerState,
     navigateTo,
@@ -47,6 +53,9 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     if (appToClose === 'explorer') {
       resetExplorerState();
     }
+    if (appToClose === 'documentViewer') {
+      setCurrentDocument(null);
+    }
     setOpenedApps((prev) => prev.slice(0, -1));
   };
 
@@ -56,6 +65,16 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 
   const isAppOpened = (appName: string) => {
     return openedApps.includes(appName);
+  };
+
+  const openDocument = (content: string) => {
+    setCurrentDocument(content);
+    openApp('documentViewer');
+  };
+
+  const closeDocument = () => {
+    setCurrentDocument(null);
+    closeApp();
   };
 
   return (
@@ -71,6 +90,9 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
       goBack,
       goForward,
       getFolder,
+      currentDocument,
+      openDocument,
+      closeDocument,
     }}>
       {children}
     </AppContext.Provider>
