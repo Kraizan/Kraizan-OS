@@ -20,6 +20,7 @@ import UserInfoHeader from "./UserInfoHeader";
 import StatsGrid from "./StatsGrid";
 import RatingChart from "./RatingChart";
 import ContestTable from "./ContestTable";
+import { getCachedData, setCachedData } from '@/utils/cache';
 
 ChartJS.register(
   CategoryScale,
@@ -91,10 +92,23 @@ const TaskManager = () => {
     setLoading(true);
     setError(null);
     setStats(null);
-    try {
-      const platform = platforms.find((p) => p.name === platformName);
-      if (!platform) throw new Error("Platform not found");
 
+    try {
+      const platform = platforms.find(p => p.name === platformName);
+      if (!platform) throw new Error('Platform not found');
+
+      // Try to get cached data first
+      const cacheKey = `platform_stats_${platform.accountId}`;
+      const cachedStats = getCachedData<PlatformStats>(cacheKey);
+      
+      if (cachedStats) {
+        setStats(cachedStats);
+        updateChartData(cachedStats.contestHistory);
+        setLoading(false);
+        return;
+      }
+
+      // If no cached data, fetch from API
       const response = await axios.get<ApiResponse>(
         getContestEndpoint(platform.accountId),
         { headers: getAuthHeader() }
@@ -134,34 +148,33 @@ const TaskManager = () => {
         bestContests,
       };
 
+      // Cache the stats before setting state
+      setCachedData(cacheKey, platformStats);
       setStats(platformStats);
+      updateChartData(contestHistory);
 
-      // Update chart data
-      setChartData({
-        labels: contestHistory
-          .slice()
-          .reverse()
-          .map((c) => new Date(c.date).toLocaleDateString()),
-        datasets: [
-          {
-            label: "Rating",
-            data: contestHistory
-              .slice()
-              .reverse()
-              .map((c) => c.new_rating),
-            borderColor: "#3498db",
-            backgroundColor: "rgba(52, 152, 219, 0.2)",
-            fill: true,
-            tension: 0.4,
-          },
-        ],
-      });
     } catch (err) {
-      setError("Failed to fetch data. Please try again later.");
+      setError('Failed to fetch data. Please try again later.');
       console.error(err);
     } finally {
       setLoading(false);
     }
+  };
+
+  const updateChartData = (contestHistory: ApiResponse['objects']) => {
+    setChartData({
+      labels: contestHistory.slice().reverse().map(c => new Date(c.date).toLocaleDateString()),
+      datasets: [
+        {
+          label: 'Rating',
+          data: contestHistory.slice().reverse().map(c => c.new_rating),
+          borderColor: '#3498db',
+          backgroundColor: 'rgba(52, 152, 219, 0.2)',
+          fill: true,
+          tension: 0.4,
+        }
+      ]
+    });
   };
 
   useEffect(() => {
@@ -175,7 +188,7 @@ const TaskManager = () => {
         onPlatformSelect={setSelectedPlatform}
       />
 
-      <div className="w-3/4 p-8">
+      <div className="w-3/4 p-6">
         {loading ? (
           <div className="flex items-center justify-center h-full">
             <div className="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12"></div>
@@ -185,7 +198,7 @@ const TaskManager = () => {
             {error}
           </div>
         ) : stats ? (
-          <div className="space-y-6">
+          <div className="space-y-4">
             <UserInfoHeader stats={stats} />
             <div className="flex gap-x-4">
               <RatingChart data={chartData} options={chartOptions} />
