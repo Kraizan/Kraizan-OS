@@ -48,10 +48,11 @@ export const useExplorerState = () => {
     const parts = path.split('/').filter(Boolean);
     let folder = folderStructure.root;
     for (const part of parts) {
-      if (!folder.children[part]) {
+      const next = folder.children[part];
+      if (!next || next.type !== 'folder') {
         return null;
       }
-      folder = folder.children[part];
+      folder = next;
     }
     return folder;
   };

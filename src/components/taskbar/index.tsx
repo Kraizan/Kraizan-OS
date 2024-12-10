@@ -38,7 +38,7 @@ const Taskbar = () => {
         <div className="flex justify-center gap-x-3 px-0.5">
           <TaskbarApp appName="terminal" />
           <TaskbarApp appName="explorer" />
-          <TaskbarApp appName="browser" />
+          <TaskbarApp appName="taskManager" />
           <TaskbarApp appName="about" />
           <TaskbarApp appName="settings" />
         </div>
