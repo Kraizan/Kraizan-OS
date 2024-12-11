@@ -7,7 +7,7 @@ interface UserInfoHeaderProps {
 
 const UserInfoHeader = ({ stats }: UserInfoHeaderProps) => {
   return (
-    <div className="bg-white rounded-xl p-4 shadow-lg">
+    <div className="bg-white rounded-b-xl p-4 shadow-lg">
       <div className="flex justify-between items-baseline">
         <div>
           <h2 className="text-2xl font-bold mb-2">{stats.handle}</h2>

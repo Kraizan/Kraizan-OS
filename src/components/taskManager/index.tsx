@@ -188,7 +188,7 @@ const TaskManager = () => {
         onPlatformSelect={setSelectedPlatform}
       />
 
-      <div className="w-3/4 p-6">
+      <div className="w-3/4 px-4">
         {loading ? (
           <div className="flex items-center justify-center h-full">
             <div className="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12"></div>
