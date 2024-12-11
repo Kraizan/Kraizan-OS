@@ -39,13 +39,13 @@ export const skillCategories: SkillCategory[] = [
         description: "UI library for web apps",
       },
       {
-        name: "TypeScript",
+        name: "Next.js",
         icon: {
           type: "img",
-          src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg",
+          src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg",
         },
-        proficiency: 5,
-        description: "JavaScript with static types",
+        proficiency: 4,
+        description: "React framework",
       },
       {
         name: "HTML5",
@@ -179,7 +179,7 @@ export const skillCategories: SkillCategory[] = [
           type: "img",
           src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg",
         },
-        proficiency: 3,
+        proficiency: 4,
         description: "Systems programming",
       },
       {
@@ -197,7 +197,7 @@ export const skillCategories: SkillCategory[] = [
           type: "img",
           src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg",
         },
-        proficiency: 5,
+        proficiency: 3,
         description: "Web development",
       },
       {
@@ -206,8 +206,17 @@ export const skillCategories: SkillCategory[] = [
           type: "img",
           src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg",
         },
-        proficiency: 5,
+        proficiency: 3,
         description: "Type-safe JavaScript",
+      },
+      {
+        name: "Python",
+        icon: {
+          type: "img",
+          src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg",
+        },
+        proficiency: 3,
+        description: "Scripting language",
       },
     ],
   },

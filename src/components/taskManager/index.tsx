@@ -53,7 +53,7 @@ const TaskManager = () => {
       },
     ],
   });
-  const [chartOptions, setChartOptions] = useState({
+  const chartOptions = {
     responsive: true,
     plugins: {
       legend: {
@@ -86,7 +86,7 @@ const TaskManager = () => {
         },
       },
     },
-  });
+  };
 
   const fetchPlatformStats = async (platformName: string) => {
     setLoading(true);

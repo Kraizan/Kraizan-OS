@@ -6,7 +6,7 @@ const TaskbarApp = ({ appName }: { appName: string }) => {
 
   return (
     <div
-      className={`transform transition-all duration-200 hover:-translate-y-1 hover:cursor-pointer p-1 ${
+      className={`hover:cursor-pointer p-1 ${
         isOpened ? 'bg-white/40 scale-105' : 'hover:bg-white/30'
       }`}
       onClick={() => openApp(appName)}
