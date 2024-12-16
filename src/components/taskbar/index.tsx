@@ -29,9 +29,9 @@ const Taskbar = () => {
   return (
     <>
       <SkillsMenu isOpen={skillsMenuOpen} onClose={() => setSkillsMenuOpen(false)} />
-      <div className="w-full h-16 mx-auto bg-taskbar px-5 flex items-end justify-between">
+      <div className="w-full h-16 mx-auto bg-taskbar pr-5 flex items-end justify-between">
         <div
-          className="self-center hover:cursor-pointer opacity-85 hover:bg-white/30 active:opacity-100 p-2 transition-all"
+          className="px-3 self-center hover:cursor-pointer opacity-85 hover:bg-white/30 active:opacity-100 p-2 transition-all"
           onClick={() => setSkillsMenuOpen(!skillsMenuOpen)}
         >
           <img src="/assets/home.png" alt="home" className="w-12 h-12" />

@@ -74,3 +74,32 @@
   100% { transform: rotate(360deg); }
 }
 
+/* Terminal styles */
+.bg-terminal {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+/* Terminal scrollbar styles */
+.terminal-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.terminal-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.terminal-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+.terminal-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* Terminal text selection */
+.terminal-text::selection {
+  background: rgba(255, 255, 255, 0.3);
+  color: inherit;
+}
+
