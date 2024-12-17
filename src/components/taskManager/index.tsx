@@ -59,6 +59,7 @@ const TaskManager = () => {
 
   const chartOptions = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         display: false,
@@ -72,6 +73,16 @@ const TaskManager = () => {
           weight: "bold" as const,
         },
       },
+      tooltip: {
+        callbacks: {
+          title: (context: any) => {
+            return context[0].label;
+          },
+          label: (context: any) => {
+            return `Rating: ${context.raw}`;
+          },
+        },
+      },
     },
     scales: {
       y: {
@@ -81,6 +92,9 @@ const TaskManager = () => {
         },
         ticks: {
           color: "#FFFFFF",
+          font: {
+            size: 12,
+          },
         },
       },
       x: {
@@ -91,6 +105,11 @@ const TaskManager = () => {
           maxRotation: 45,
           minRotation: 45,
           color: "#FFFFFF",
+          font: {
+            size: 11,
+          },
+          autoSkip: true,
+          maxTicksLimit: 30,
         },
       },
     },
@@ -108,6 +127,8 @@ const TaskManager = () => {
       // Try to get cached data first
       const cacheKey = `platform_stats_${platform.accountId}`;
       const cachedStats = getCachedData<PlatformStats>(cacheKey);
+
+      console.log(cachedStats);
 
       if (cachedStats) {
         setStats(cachedStats);
@@ -170,13 +191,18 @@ const TaskManager = () => {
 
   const updateChartData = (contestHistory: any[]) => {
     const sortedContests = [...contestHistory].sort(
-      (a, b) => new Date(a.end_time).getTime() - new Date(b.end_time).getTime()
-    );
+      (a, b) => new Date(b.end_time).getTime() - new Date(a.end_time).getTime()
+    ).reverse();
 
     setChartData({
-      labels: sortedContests.map((contest) =>
-        new Date(contest.end_time).toLocaleDateString()
-      ),
+      labels: sortedContests.map((contest) => {
+        const date = new Date(contest.date);
+        return date.toLocaleDateString('en-US', {
+          month: 'short',
+          day: 'numeric',
+          year: '2-digit'
+        });
+      }),
       datasets: [
         {
           label: "Rating",
@@ -185,7 +211,7 @@ const TaskManager = () => {
           backgroundColor: "rgba(255, 255, 255, 0.1)",
           borderWidth: 2,
           fill: true,
-          tension: 0.4,
+          tension: 0.5,
         },
       ],
     });

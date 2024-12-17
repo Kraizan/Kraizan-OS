@@ -1,6 +1,6 @@
 import { skillCategories } from "@/data/skills";
 import type { Skill, SkillIcon } from "@/data/skills";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { useSettings } from "@/context/SettingsContext";
 
 interface SkillsMenuProps {
@@ -76,7 +76,7 @@ const SkillsMenu = ({ isOpen, onClose }: SkillsMenuProps) => {
 
   return (
     <div
-      className={`fixed bottom-0 left-0 flex items-center justify-center transition-opacity duration-200 ${
+      className={`fixed inset-0 flex items-center justify-center transition-opacity duration-200 ${
         isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
       }`}
       style={{ backgroundColor: theme.background + '99' }}

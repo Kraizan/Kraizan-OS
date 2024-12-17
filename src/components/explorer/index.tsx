@@ -4,8 +4,7 @@ import { folderStructure } from "@/data/folderStructure";
 import React from 'react';
 
 const Explorer = () => {
-  const { explorerState, navigateTo, goBack, goForward, getFolder, openDocument } =
-    useAppContext();
+  const { explorerState, navigateTo, goBack, goForward, getFolder, openDocument } = useAppContext();
   const { theme } = useSettings();
   const { currentPath, history, historyIndex } = explorerState;
 
@@ -42,7 +41,7 @@ const Explorer = () => {
         <button 
           onClick={goBack} 
           disabled={historyIndex === 0} 
-          className="mr-2 px-2 py-1 rounded transition-colors disabled:opacity-50 hover:bg-opacity-20"
+          className="app-button mr-2 px-2 py-1 disabled:opacity-50"
           style={{ 
             color: theme.text,
             backgroundColor: 'transparent'
@@ -53,7 +52,7 @@ const Explorer = () => {
         <button
           onClick={goForward}
           disabled={historyIndex === history.length - 1}
-          className="mr-2 px-2 py-1 rounded transition-colors disabled:opacity-50 hover:bg-opacity-20"
+          className="app-button mr-2 px-2 py-1 disabled:opacity-50"
           style={{ 
             color: theme.text,
             backgroundColor: 'transparent'
@@ -85,16 +84,16 @@ const Explorer = () => {
       {/* Explorer Content */}
       <div className="flex h-full space-x-2 px-2">
         {/* Sidebar */}
-        <div className="w-1/5 p-4 rounded-lg theme-transition" style={{ 
+        <div className="w-1/5 app-section" style={{ 
           backgroundColor: theme.primary + '40'
         }}>
-          <h2 className="font-bold" style={{ color: theme.text }}>Home</h2>
+          <h2 className="app-subheading" style={{ color: theme.text }}>Home</h2>
           <ul>
             {Object.values(folderStructure.root.children.Home.children).map(
               (folder: any) => (
                 <li
                   key={folder.path}
-                  className="cursor-pointer flex items-center gap-2 p-2 rounded transition-colors hover:bg-opacity-20"
+                  className="app-list-item flex items-center gap-2"
                   style={{ 
                     color: theme.text
                   }}
@@ -113,16 +112,16 @@ const Explorer = () => {
         </div>
 
         {/* Main Content */}
-        <div className="w-4/5 flex flex-col rounded-lg theme-transition" style={{ 
+        <div className="w-4/5 flex flex-col app-section" style={{ 
           backgroundColor: theme.primary + '20'
         }}>
-          <div className="flex-grow p-4">
-            <h2 className="font-bold mb-4" style={{ color: theme.text }}>{currentFolder.name}</h2>
+          <div className="flex-grow">
+            <h2 className="app-subheading" style={{ color: theme.text }}>{currentFolder.name}</h2>
             <ul className="flex flex-wrap gap-6">
               {Object.values(currentFolder.children).map((item: any) => (
                 <li
                   key={item.path}
-                  className="cursor-pointer text-center px-5 py-2 rounded transition-colors hover:bg-opacity-20"
+                  className="app-list-item text-center px-5 py-2"
                   style={{ 
                     color: theme.text
                   }}
@@ -131,9 +130,7 @@ const Explorer = () => {
                   <img
                     src={item.type === 'file' ? '/assets/file.png' : item.image}
                     alt={item.name}
-                    className={`w-20 h-20 mx-auto mb-2 ${
-                      item.type === 'file' ? '' : 'hover:scale-105 transition-transform'
-                    }`}
+                    className="w-20 h-20 mx-auto mb-2"
                   />
                   <p>{item.name}</p>
                 </li>

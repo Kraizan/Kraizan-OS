@@ -8,15 +8,21 @@ const TaskbarApp = ({ appName }: { appName: string }) => {
 
   return (
     <div
-      className={`hover:cursor-pointer p-1 transition-colors rounded-lg hover:bg-opacity-20 ${
+      className={`hover:cursor-pointer p-2 rounded-lg transition-all duration-150 hover:scale-105 active:scale-95 ${
         isOpened ? 'scale-105' : ''
       }`}
-      style={{ 
+      style={{
         backgroundColor: isOpened ? theme.accent + '40' : 'transparent'
+      }}
+      onMouseOver={(e) => {
+        e.currentTarget.style.backgroundColor = theme.accent + '20';
+      }}
+      onMouseOut={(e) => {
+        e.currentTarget.style.backgroundColor = isOpened ? theme.accent + '40' : 'transparent';
       }}
       onClick={() => openApp(appName)}
     >
-      <img src={`/assets/${appName}.png`} alt={`${appName}`} className="w-12 h-12" />
+      <img src={`/assets/${appName}.png`} alt={`${appName}`} className="w-10 h-10" />
     </div>
   );
 };

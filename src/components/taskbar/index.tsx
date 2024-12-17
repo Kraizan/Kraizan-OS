@@ -36,12 +36,15 @@ const Taskbar = () => {
         style={{ backgroundColor: theme.primary + 'cc' }}
       >
         <div
-          className="px-3 self-center cursor-pointer opacity-85 hover:bg-white/30 active:opacity-100 p-2 transition-all rounded-lg"
+          className="self-center p-2 rounded-lg transition-all duration-150 hover:scale-105 active:scale-95 cursor-pointer"
+          style={{ 
+            backgroundColor: skillsMenuOpen ? theme.accent + '40' : 'transparent'
+          }}
           onClick={() => setSkillsMenuOpen(!skillsMenuOpen)}
         >
-          <img src="/assets/home.png" alt="home" className="w-12 h-12" />
+          <img src="/assets/home.png" alt="home" className="w-10 h-10" />
         </div>
-        <div className="max-w-max mx-auto flex justify-center gap-x-3 px-0.5">
+        <div className="max-w-max mx-auto flex justify-center gap-x-2 px-0.5">
           <TaskbarApp appName="terminal" />
           <TaskbarApp appName="explorer" />
           <TaskbarApp appName="taskManager" />

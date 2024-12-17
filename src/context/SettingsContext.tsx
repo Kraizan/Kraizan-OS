@@ -21,8 +21,8 @@ interface SettingsContextType {
 }
 
 const defaultTheme: Theme = {
-  id: 'default',
-  name: 'Default Theme',
+  id: 'ocean',
+  name: 'Ocean Theme',
   primary: '#1a1a1a',
   secondary: '#2d2d2d',
   accent: '#3498db',
@@ -34,7 +34,7 @@ const SettingsContext = createContext<SettingsContextType | undefined>(undefined
 
 export const SettingsProvider = ({ children }: { children: ReactNode }) => {
   const [theme, setThemeState] = useState<Theme>(defaultTheme);
-  const [wallpaper, setWallpaperState] = useState<string>('/assets/wallpapers/default.jpg');
+  const [wallpaper, setWallpaperState] = useState<string>('/assets/wallpapers/ocean.jpg');
   const [fontSize, setFontSizeState] = useState<number>(16);
 
   // Load settings from localStorage on mount
@@ -96,7 +96,7 @@ export const SettingsProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const setWallpaper = (wallpaperId: string) => {
-    const wallpaperUrl = wallpapers.find(w => w.id === wallpaperId)?.url || '/assets/wallpapers/default.jpg';
+    const wallpaperUrl = wallpapers.find(w => w.id === wallpaperId)?.url || '/assets/wallpapers/ocean.jpg';
     setWallpaperState(wallpaperUrl);
   };
 
@@ -127,7 +127,7 @@ export const useSettings = () => {
 };
 
 export const wallpapers = [
-  { id: 'default', name: 'Default', url: '/assets/wallpapers/default.jpg' },
+  { id: 'space', name: 'Space', url: '/assets/wallpapers/default.jpg' },
   { id: 'mountains', name: 'Mountains', url: '/assets/wallpapers/mountains.jpg' },
   { id: 'forest', name: 'Forest', url: '/assets/wallpapers/forest.jpg' },
   { id: 'ocean', name: 'Ocean', url: '/assets/wallpapers/ocean.jpg' },

@@ -14,43 +14,41 @@ const Settings = () => {
   return (
     <div className="w-full h-full max-h-[calc(100vh-110px)] flex theme-transition" style={{ backgroundColor: theme.background + '99' }}>
       {/* Sidebar */}
-      <div className="w-1/5 border-r theme-transition" style={{ 
-        backgroundColor: theme.primary + 'cc',
-        borderColor: theme.secondary + '40'
+      <div className="w-1/4 app-content theme-transition" style={{ 
+        backgroundColor: theme.primary + 'cc'
       }}>
-        <div className="p-4 border-b theme-transition" style={{ borderColor: theme.secondary + '40' }}>
-          <h2 className="text-lg font-semibold" style={{ color: theme.text }}>Settings</h2>
-        </div>
-        <nav className="p-2">
+        <h2 className="app-heading" style={{ color: theme.text }}>Settings</h2>
+        <ul className="space-y-2">
           {tabs.map((tab) => (
-            <button
+            <li
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`w-full text-left px-4 py-2 rounded-lg mb-2 flex items-center space-x-2 transition-all ${
+              className={`app-list-item flex items-center gap-2 ${
                 activeTab === tab.id
-                  ? 'bg-opacity-20'
-                  : 'hover:bg-opacity-10'
+                  ? "shadow-md"
+                  : "hover:bg-opacity-50"
               }`}
               style={{ 
-                backgroundColor: activeTab === tab.id ? theme.accent + '99' : 'transparent',
+                backgroundColor: activeTab === tab.id ? theme.accent + '99' : theme.primary + '99',
+                color: theme.text
               }}
             >
               <span>{tab.icon}</span>
               <span>{tab.name}</span>
-            </button>
+            </li>
           ))}
-        </nav>
+        </ul>
       </div>
 
       {/* Main Content */}
       <div className="flex-1 overflow-y-auto custom-scrollbar">
         {activeTab === 'appearance' && (
-          <div className="p-6 space-y-8">
+          <div className="app-content">
             {/* Current Theme Preview */}
             <section>
-              <h3 className="text-lg font-semibold mb-4" style={{ color: theme.text }}>Current Theme</h3>
+              <h3 className="app-subheading" style={{ color: theme.text }}>Current Theme</h3>
               <div 
-                className="p-4 rounded-lg border-2 transition-all"
+                className="app-section border-2"
                 style={{ 
                   background: theme.primary + 'cc',
                   borderColor: theme.secondary + '40'
@@ -64,10 +62,9 @@ const Settings = () => {
                     (color, index) => (
                       <div
                         key={index}
-                        className="w-6 h-6 rounded-full border"
+                        className="w-6 h-6 rounded-full border border-white/80"
                         style={{ 
                           background: color,
-                          borderColor: theme.secondary + '40'
                         }}
                       />
                     )
@@ -81,13 +78,13 @@ const Settings = () => {
 
             {/* Wallpaper Section */}
             <section>
-              <h3 className="text-lg font-semibold mb-4" style={{ color: theme.text }}>Wallpaper</h3>
+              <h3 className="app-subheading" style={{ color: theme.text }}>Wallpaper</h3>
               <div className="grid grid-cols-3 gap-4">
                 {wallpapers.map((w) => (
                   <button
                     key={w.id}
                     onClick={() => setWallpaper(w.id)}
-                    className="relative aspect-video rounded-lg overflow-hidden border-2 transition-all"
+                    className="app-button relative aspect-video overflow-hidden border-2"
                     style={{ 
                       borderColor: wallpaper === w.url ? theme.accent : theme.secondary + '40'
                     }}
@@ -107,11 +104,11 @@ const Settings = () => {
 
             {/* Font Size Section */}
             <section>
-              <h3 className="text-lg font-semibold mb-4" style={{ color: theme.text }}>Font Size</h3>
+              <h3 className="app-subheading" style={{ color: theme.text }}>Font Size</h3>
               <div className="flex items-center space-x-4">
                 <button
                   onClick={() => setFontSize(fontSize - 1)}
-                  className="p-2 rounded-lg border transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="app-button p-2 border disabled:opacity-50 disabled:cursor-not-allowed"
                   style={{ 
                     borderColor: theme.secondary + '40',
                     color: theme.text,
@@ -126,7 +123,7 @@ const Settings = () => {
                 </span>
                 <button
                   onClick={() => setFontSize(fontSize + 1)}
-                  className="p-2 rounded-lg border transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="app-button p-2 border disabled:opacity-50 disabled:cursor-not-allowed"
                   style={{ 
                     borderColor: theme.secondary + '40',
                     color: theme.text,
@@ -145,7 +142,7 @@ const Settings = () => {
                 </button>
               </div>
               <div 
-                className="mt-4 p-4 rounded-lg border transition-all"
+                className="app-section border mt-4"
                 style={{ 
                   borderColor: theme.secondary + '40',
                   backgroundColor: theme.primary + '40'
@@ -163,15 +160,15 @@ const Settings = () => {
         )}
 
         {activeTab === 'system' && (
-          <div className="p-6">
-            <h3 className="text-lg font-semibold mb-4" style={{ color: theme.text }}>System Settings</h3>
+          <div className="app-content">
+            <h3 className="app-subheading" style={{ color: theme.text }}>System Settings</h3>
             <p style={{ color: theme.text + 'cc' }}>System settings coming soon...</p>
           </div>
         )}
 
         {activeTab === 'about' && (
-          <div className="p-6">
-            <h3 className="text-lg font-semibold mb-4" style={{ color: theme.text }}>About</h3>
+          <div className="app-content">
+            <h3 className="app-subheading" style={{ color: theme.text }}>About</h3>
             <div className="space-y-4" style={{ color: theme.text + 'cc' }}>
               <p>Portfolio OS Version 1.0.0</p>
               <p>A modern, customizable portfolio interface</p>
