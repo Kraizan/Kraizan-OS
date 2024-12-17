@@ -3,7 +3,7 @@ import { useSettings, wallpapers } from '@/context/SettingsContext';
 
 const Settings = () => {
   const [activeTab, setActiveTab] = useState('appearance');
-  const { theme, wallpaper, setWallpaper, fontSize, setFontSize } = useSettings();
+  const { theme, wallpaper, setWallpaper} = useSettings();
 
   const tabs = [
     { id: 'appearance', name: 'Appearance', icon: '🎨' },
@@ -99,61 +99,6 @@ const Settings = () => {
                     </div>
                   </button>
                 ))}
-              </div>
-            </section>
-
-            {/* Font Size Section */}
-            <section>
-              <h3 className="app-subheading" style={{ color: theme.text }}>Font Size</h3>
-              <div className="flex items-center space-x-4">
-                <button
-                  onClick={() => setFontSize(fontSize - 1)}
-                  className="app-button p-2 border disabled:opacity-50 disabled:cursor-not-allowed"
-                  style={{ 
-                    borderColor: theme.secondary + '40',
-                    color: theme.text,
-                    backgroundColor: theme.primary + '40'
-                  }}
-                  disabled={fontSize <= 12}
-                >
-                  -
-                </button>
-                <span style={{ color: theme.text }} className="min-w-[3rem] text-center">
-                  {fontSize}px
-                </span>
-                <button
-                  onClick={() => setFontSize(fontSize + 1)}
-                  className="app-button p-2 border disabled:opacity-50 disabled:cursor-not-allowed"
-                  style={{ 
-                    borderColor: theme.secondary + '40',
-                    color: theme.text,
-                    backgroundColor: theme.primary + '40'
-                  }}
-                  disabled={fontSize >= 24}
-                >
-                  +
-                </button>
-                <button
-                  onClick={() => setFontSize(16)}
-                  className="ml-4 px-3 py-1 text-sm opacity-80 hover:opacity-100"
-                  style={{ color: theme.text }}
-                >
-                  Reset
-                </button>
-              </div>
-              <div 
-                className="app-section border mt-4"
-                style={{ 
-                  borderColor: theme.secondary + '40',
-                  backgroundColor: theme.primary + '40'
-                }}
-              >
-                <p style={{ 
-                  fontSize: `${fontSize}px`,
-                  color: theme.text 
-                }}>
-                  Preview text at {fontSize}px
-                </p>
               </div>
             </section>
           </div>

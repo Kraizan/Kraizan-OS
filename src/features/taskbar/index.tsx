@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import TaskbarApp from './components/TaskbarApp';
-import SkillsMenu from '../SkillsMenu';
+import SkillsMenu from '@/features/skills';
 import { useSettings } from '@/context/SettingsContext';
 
 const Taskbar = () => {

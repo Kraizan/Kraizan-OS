@@ -1,7 +1,7 @@
 import { createContext, useContext, ReactNode, useState, useEffect } from 'react';
 import { extractThemeFromImage } from '@/utils/colorExtractor';
 
-interface Theme {
+export interface Theme {
   id: string;
   name: string;
   primary: string;
@@ -16,8 +16,6 @@ interface SettingsContextType {
   setTheme: (themeId: string) => void;
   wallpaper: string;
   setWallpaper: (wallpaperId: string) => void;
-  fontSize: number;
-  setFontSize: (size: number) => void;
 }
 
 const defaultTheme: Theme = {
@@ -35,16 +33,14 @@ const SettingsContext = createContext<SettingsContextType | undefined>(undefined
 export const SettingsProvider = ({ children }: { children: ReactNode }) => {
   const [theme, setThemeState] = useState<Theme>(defaultTheme);
   const [wallpaper, setWallpaperState] = useState<string>('/assets/wallpapers/ocean.jpg');
-  const [fontSize, setFontSizeState] = useState<number>(16);
 
   // Load settings from localStorage on mount
   useEffect(() => {
     const savedSettings = localStorage.getItem('portfolioSettings');
     if (savedSettings) {
-      const { theme, wallpaper, fontSize } = JSON.parse(savedSettings);
+      const { theme, wallpaper } = JSON.parse(savedSettings);
       setThemeState(theme);
       setWallpaperState(wallpaper);
-      setFontSizeState(fontSize);
     }
   }, []);
 
@@ -71,24 +67,22 @@ export const SettingsProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     localStorage.setItem('portfolioSettings', JSON.stringify({
       theme,
-      wallpaper,
-      fontSize
+      wallpaper
     }));
 
     // Apply theme to document
-    document.documentElement.style.setProperty('--primary-color', theme.primary + 'cc'); // 80% opacity
-    document.documentElement.style.setProperty('--secondary-color', theme.secondary + 'cc'); // 80% opacity
+    document.documentElement.style.setProperty('--primary-color', theme.primary + 'cc');
+    document.documentElement.style.setProperty('--secondary-color', theme.secondary + 'cc');
     document.documentElement.style.setProperty('--accent-color', theme.accent);
-    document.documentElement.style.setProperty('--background-color', theme.background + '99'); // 60% opacity
+    document.documentElement.style.setProperty('--background-color', theme.background + '99');
     document.documentElement.style.setProperty('--text-color', theme.text);
-    document.documentElement.style.setProperty('--font-size', `${fontSize}px`);
 
     // Apply wallpaper
     document.body.style.backgroundImage = `url(${wallpaper})`;
     document.body.style.backgroundSize = 'cover';
     document.body.style.backgroundPosition = 'center';
     document.body.style.backgroundAttachment = 'fixed';
-  }, [theme, wallpaper, fontSize]);
+  }, [theme, wallpaper]);
 
   const setTheme = (themeId: string) => {
     // Theme is now automatically set from wallpaper
@@ -100,18 +94,12 @@ export const SettingsProvider = ({ children }: { children: ReactNode }) => {
     setWallpaperState(wallpaperUrl);
   };
 
-  const setFontSize = (size: number) => {
-    setFontSizeState(Math.min(Math.max(size, 12), 24)); // Clamp between 12 and 24
-  };
-
   return (
     <SettingsContext.Provider value={{
       theme,
       setTheme,
       wallpaper,
       setWallpaper,
-      fontSize,
-      setFontSize,
     }}>
       {children}
     </SettingsContext.Provider>
