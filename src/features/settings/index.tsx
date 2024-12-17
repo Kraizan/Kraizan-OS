@@ -1,125 +1,35 @@
-import { useState } from 'react';
-import { useSettings, wallpapers } from '@/context/SettingsContext';
+import { FC, useState } from 'react';
+import { useSettings } from '@/context/SettingsContext';
+import { TabId } from '@/types/settings';
+import { Tabs } from './components/Tabs';
+import { AppearanceTab } from './components/AppearanceTab';
+import { SystemTab } from './components/SystemTab';
+import { AboutTab } from './components/AboutTab';
 
-const Settings = () => {
-  const [activeTab, setActiveTab] = useState('appearance');
-  const { theme, wallpaper, setWallpaper} = useSettings();
-
-  const tabs = [
-    { id: 'appearance', name: 'Appearance', icon: '🎨' },
-    { id: 'system', name: 'System', icon: '⚙️' },
-    { id: 'about', name: 'About', icon: 'ℹ️' },
-  ];
+const Settings: FC = () => {
+  const [activeTab, setActiveTab] = useState<TabId>('appearance');
+  const { theme, wallpaper, setWallpaper } = useSettings();
 
   return (
     <div className="w-full h-full max-h-[calc(100vh-110px)] flex theme-transition" style={{ backgroundColor: theme.background + '99' }}>
-      {/* Sidebar */}
-      <div className="w-1/4 app-content theme-transition" style={{ 
-        backgroundColor: theme.primary + 'cc'
-      }}>
-        <h2 className="app-heading" style={{ color: theme.text }}>Settings</h2>
-        <ul className="space-y-2">
-          {tabs.map((tab) => (
-            <li
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`app-list-item flex items-center gap-2 ${
-                activeTab === tab.id
-                  ? "shadow-md"
-                  : "hover:bg-opacity-50"
-              }`}
-              style={{ 
-                backgroundColor: activeTab === tab.id ? theme.accent + '99' : theme.primary + '99',
-                color: theme.text
-              }}
-            >
-              <span>{tab.icon}</span>
-              <span>{tab.name}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {/* Main Content */}
+      <Tabs 
+        theme={theme}
+        activeTab={activeTab}
+        onTabChange={setActiveTab}
+      />
       <div className="flex-1 overflow-y-auto custom-scrollbar">
         {activeTab === 'appearance' && (
-          <div className="app-content">
-            {/* Current Theme Preview */}
-            <section>
-              <h3 className="app-subheading" style={{ color: theme.text }}>Current Theme</h3>
-              <div 
-                className="app-section border-2"
-                style={{ 
-                  background: theme.primary + 'cc',
-                  borderColor: theme.secondary + '40'
-                }}
-              >
-                <div className="flex items-center justify-between">
-                  <span style={{ color: theme.text }}>{theme.name}</span>
-                </div>
-                <div className="mt-2 flex space-x-2">
-                  {[theme.primary, theme.secondary, theme.accent].map(
-                    (color, index) => (
-                      <div
-                        key={index}
-                        className="w-6 h-6 rounded-full border border-white/80"
-                        style={{ 
-                          background: color,
-                        }}
-                      />
-                    )
-                  )}
-                </div>
-                <p className="mt-4 text-sm opacity-80" style={{ color: theme.text }}>
-                  Theme colors are automatically generated from the selected wallpaper.
-                </p>
-              </div>
-            </section>
-
-            {/* Wallpaper Section */}
-            <section>
-              <h3 className="app-subheading" style={{ color: theme.text }}>Wallpaper</h3>
-              <div className="grid grid-cols-3 gap-4">
-                {wallpapers.map((w) => (
-                  <button
-                    key={w.id}
-                    onClick={() => setWallpaper(w.id)}
-                    className="app-button relative aspect-video overflow-hidden border-2"
-                    style={{ 
-                      borderColor: wallpaper === w.url ? theme.accent : theme.secondary + '40'
-                    }}
-                  >
-                    <img
-                      src={w.url}
-                      alt={w.name}
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute bottom-0 left-0 right-0 bg-black/50 p-2 text-sm" style={{ color: theme.text }}>
-                      {w.name}
-                    </div>
-                  </button>
-                ))}
-              </div>
-            </section>
-          </div>
+          <AppearanceTab 
+            theme={theme}
+            wallpaper={wallpaper}
+            setWallpaper={setWallpaper}
+          />
         )}
-
         {activeTab === 'system' && (
-          <div className="app-content">
-            <h3 className="app-subheading" style={{ color: theme.text }}>System Settings</h3>
-            <p style={{ color: theme.text + 'cc' }}>System settings coming soon...</p>
-          </div>
+          <SystemTab theme={theme} />
         )}
-
         {activeTab === 'about' && (
-          <div className="app-content">
-            <h3 className="app-subheading" style={{ color: theme.text }}>About</h3>
-            <div className="space-y-4" style={{ color: theme.text + 'cc' }}>
-              <p>Portfolio OS Version 1.0.0</p>
-              <p>A modern, customizable portfolio interface</p>
-              <p>Built with React, TypeScript, and Tailwind CSS</p>
-            </div>
-          </div>
+          <AboutTab theme={theme} />
         )}
       </div>
     </div>
