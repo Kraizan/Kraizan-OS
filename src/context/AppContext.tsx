@@ -1,5 +1,6 @@
 import { createContext, useContext, ReactNode, useState } from 'react';
 import { useExplorerState, ExplorerState } from '@/hooks/useExplorerState';
+import { SettingsProvider } from '@/context/SettingsContext';
 
 interface AppContextType {
   // App state
@@ -78,24 +79,26 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   };
 
   return (
-    <AppContext.Provider value={{
-      openedApps,
-      openApp,
-      closeApp,
-      minimizeAllApps,
-      isAppOpened,
-      minimized,
-      explorerState,
-      navigateTo,
-      goBack,
-      goForward,
-      getFolder,
-      currentDocument,
-      openDocument,
-      closeDocument,
-    }}>
-      {children}
-    </AppContext.Provider>
+    <SettingsProvider>
+      <AppContext.Provider value={{
+        openedApps,
+        openApp,
+        closeApp,
+        minimizeAllApps,
+        isAppOpened,
+        minimized,
+        explorerState,
+        navigateTo,
+        goBack,
+        goForward,
+        getFolder,
+        currentDocument,
+        openDocument,
+        closeDocument,
+      }}>
+        {children}
+      </AppContext.Provider>
+    </SettingsProvider>
   );
 };
 

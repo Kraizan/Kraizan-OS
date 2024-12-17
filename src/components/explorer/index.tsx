@@ -1,17 +1,24 @@
 import { useAppContext } from "@/context/AppContext";
+import { useSettings } from "@/context/SettingsContext";
 import { folderStructure } from "@/data/folderStructure";
 import React from 'react';
 
 const Explorer = () => {
   const { explorerState, navigateTo, goBack, goForward, getFolder, openDocument } =
     useAppContext();
+  const { theme } = useSettings();
   const { currentPath, history, historyIndex } = explorerState;
 
   const currentFolder = getFolder(currentPath);
 
   if (!currentFolder) {
     return (
-      <div className="w-full h-full flex bg-background">Folder not found</div>
+      <div className="w-full h-full flex theme-transition" style={{ 
+        backgroundColor: theme.background + '99',
+        color: theme.text
+      }}>
+        Folder not found
+      </div>
     );
   }
 
@@ -24,27 +31,45 @@ const Explorer = () => {
   };
 
   return (
-    <div className="w-full h-full flex flex-col bg-background-dark">
+    <div className="w-full h-full flex flex-col theme-transition" style={{ 
+      backgroundColor: theme.background + '99'
+    }}>
       {/* Breadcrumb Navigation */}
-      <div className="w-full flex items-center px-4 py-2">
-        <button onClick={goBack} disabled={historyIndex === 0} className="mr-2">
+      <div className="w-full flex items-center px-4 py-2 border-b theme-transition" style={{ 
+        backgroundColor: theme.primary + 'cc',
+        borderColor: theme.secondary + '40'
+      }}>
+        <button 
+          onClick={goBack} 
+          disabled={historyIndex === 0} 
+          className="mr-2 px-2 py-1 rounded transition-colors disabled:opacity-50 hover:bg-opacity-20"
+          style={{ 
+            color: theme.text,
+            backgroundColor: 'transparent'
+          }}
+        >
           &#129136; Back
         </button>
         <button
           onClick={goForward}
           disabled={historyIndex === history.length - 1}
-          className="mr-2"
+          className="mr-2 px-2 py-1 rounded transition-colors disabled:opacity-50 hover:bg-opacity-20"
+          style={{ 
+            color: theme.text,
+            backgroundColor: 'transparent'
+          }}
         >
           Forward &#129138;
         </button>
-        <div className="flex-grow text-center">
+        <div className="flex-grow text-center" style={{ color: theme.text }}>
           {currentPath
             .split("/")
             .filter(Boolean)
             .map((part, index, arr) => (
               <React.Fragment key={index}>
                 <span
-                  className="cursor-pointer hover:underline hover:underline-offset-2 mx-2"
+                  className="cursor-pointer hover:underline hover:underline-offset-2 mx-2 transition-colors"
+                  style={{ color: theme.text }}
                   onClick={() =>
                     navigateTo("/" + arr.slice(0, index + 1).join("/"))
                   }
@@ -60,14 +85,19 @@ const Explorer = () => {
       {/* Explorer Content */}
       <div className="flex h-full space-x-2 px-2">
         {/* Sidebar */}
-        <div className="w-1/5 bg-background p-4 rounded-lg">
-          <h2 className="font-bold">Home</h2>
+        <div className="w-1/5 p-4 rounded-lg theme-transition" style={{ 
+          backgroundColor: theme.primary + '40'
+        }}>
+          <h2 className="font-bold" style={{ color: theme.text }}>Home</h2>
           <ul>
             {Object.values(folderStructure.root.children.Home.children).map(
               (folder: any) => (
                 <li
                   key={folder.path}
-                  className="cursor-pointer flex items-center gap-2 hover:bg-background-dark p-2 rounded"
+                  className="cursor-pointer flex items-center gap-2 p-2 rounded transition-colors hover:bg-opacity-20"
+                  style={{ 
+                    color: theme.text
+                  }}
                   onClick={() => navigateTo(folder.path)}
                 >
                   <img
@@ -83,14 +113,19 @@ const Explorer = () => {
         </div>
 
         {/* Main Content */}
-        <div className="w-4/5 flex flex-col bg-background rounded-lg">
+        <div className="w-4/5 flex flex-col rounded-lg theme-transition" style={{ 
+          backgroundColor: theme.primary + '20'
+        }}>
           <div className="flex-grow p-4">
-            <h2 className="font-bold mb-4">{currentFolder.name}</h2>
+            <h2 className="font-bold mb-4" style={{ color: theme.text }}>{currentFolder.name}</h2>
             <ul className="flex flex-wrap gap-6">
               {Object.values(currentFolder.children).map((item: any) => (
                 <li
                   key={item.path}
-                  className="cursor-pointer text-center hover:bg-background-dark px-5 py-2 rounded transition-colors"
+                  className="cursor-pointer text-center px-5 py-2 rounded transition-colors hover:bg-opacity-20"
+                  style={{ 
+                    color: theme.text
+                  }}
                   onClick={() => handleItemClick(item)}
                 >
                   <img

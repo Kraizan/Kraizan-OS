@@ -15,12 +15,13 @@ import { ApiResponse, PlatformStats } from "@/data/types/contest";
 import { platforms } from "@/data/platforms";
 import { getRankInfo } from "@/utils/rankInfo";
 import { getContestEndpoint, getAuthHeader } from "@/config/api";
+import { useSettings } from "@/context/SettingsContext";
 import PlatformSelector from "./PlatformSelector";
 import UserInfoHeader from "./UserInfoHeader";
 import StatsGrid from "./StatsGrid";
 import RatingChart from "./RatingChart";
 import ContestTable from "./ContestTable";
-import { getCachedData, setCachedData } from '@/utils/cache';
+import { getCachedData, setCachedData } from "@/utils/cache";
 
 ChartJS.register(
   CategoryScale,
@@ -40,19 +41,22 @@ const TaskManager = () => {
   const [stats, setStats] = useState<PlatformStats | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const { theme } = useSettings();
   const [chartData, setChartData] = useState<any>({
     labels: [],
     datasets: [
       {
         label: "Rating",
         data: [],
-        borderColor: "#3498db",
-        backgroundColor: "rgba(52, 152, 219, 0.2)",
+        borderColor: "#FFFFFF",
+        backgroundColor: "rgba(255, 255, 255, 0.1)",
+        borderWidth: 2,
         fill: true,
         tension: 0.4,
       },
     ],
   });
+
   const chartOptions = {
     responsive: true,
     plugins: {
@@ -62,7 +66,7 @@ const TaskManager = () => {
       title: {
         display: true,
         text: "Rating History",
-        color: "#2d3748",
+        color: "#FFFFFF",
         font: {
           size: 16,
           weight: "bold" as const,
@@ -73,7 +77,10 @@ const TaskManager = () => {
       y: {
         beginAtZero: false,
         grid: {
-          color: "rgba(0, 0, 0, 0.1)",
+          color: "rgba(255, 255, 255, 0.1)",
+        },
+        ticks: {
+          color: "#FFFFFF",
         },
       },
       x: {
@@ -83,6 +90,7 @@ const TaskManager = () => {
         ticks: {
           maxRotation: 45,
           minRotation: 45,
+          color: "#FFFFFF",
         },
       },
     },
@@ -94,13 +102,13 @@ const TaskManager = () => {
     setStats(null);
 
     try {
-      const platform = platforms.find(p => p.name === platformName);
-      if (!platform) throw new Error('Platform not found');
+      const platform = platforms.find((p) => p.name === platformName);
+      if (!platform) throw new Error("Platform not found");
 
       // Try to get cached data first
       const cacheKey = `platform_stats_${platform.accountId}`;
       const cachedStats = getCachedData<PlatformStats>(cacheKey);
-      
+
       if (cachedStats) {
         setStats(cachedStats);
         updateChartData(cachedStats.contestHistory);
@@ -152,28 +160,34 @@ const TaskManager = () => {
       setCachedData(cacheKey, platformStats);
       setStats(platformStats);
       updateChartData(contestHistory);
-
     } catch (err) {
-      setError('Failed to fetch data. Please try again later.');
+      setError("Failed to fetch data. Please try again later.");
       console.error(err);
     } finally {
       setLoading(false);
     }
   };
 
-  const updateChartData = (contestHistory: ApiResponse['objects']) => {
+  const updateChartData = (contestHistory: any[]) => {
+    const sortedContests = [...contestHistory].sort(
+      (a, b) => new Date(a.end_time).getTime() - new Date(b.end_time).getTime()
+    );
+
     setChartData({
-      labels: contestHistory.slice().reverse().map(c => new Date(c.date).toLocaleDateString()),
+      labels: sortedContests.map((contest) =>
+        new Date(contest.end_time).toLocaleDateString()
+      ),
       datasets: [
         {
-          label: 'Rating',
-          data: contestHistory.slice().reverse().map(c => c.new_rating),
-          borderColor: '#3498db',
-          backgroundColor: 'rgba(52, 152, 219, 0.2)',
+          label: "Rating",
+          data: sortedContests.map((contest) => contest.new_rating),
+          borderColor: "#FFFFFF",
+          backgroundColor: "rgba(255, 255, 255, 0.1)",
+          borderWidth: 2,
           fill: true,
           tension: 0.4,
-        }
-      ]
+        },
+      ],
     });
   };
 
@@ -181,41 +195,61 @@ const TaskManager = () => {
     fetchPlatformStats(selectedPlatform);
   }, [selectedPlatform]);
 
+  if (loading) {
+    return (
+      <div
+        className="w-full h-full flex items-center justify-center theme-transition"
+        style={{
+          backgroundColor: theme.background + "99",
+          color: theme.text,
+        }}
+      >
+        Loading...
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div
+        className="w-full h-full flex items-center justify-center theme-transition"
+        style={{
+          backgroundColor: theme.background + "99",
+          color: theme.text,
+        }}
+      >
+        {error}
+      </div>
+    );
+  }
+
   return (
-    <div className="w-full h-full flex bg-gray-100">
+    <div
+      className="w-full h-full flex theme-transition"
+      style={{
+        backgroundColor: theme.background + "99",
+      }}
+    >
       <PlatformSelector
         selectedPlatform={selectedPlatform}
         onPlatformSelect={setSelectedPlatform}
       />
-
-      <div className="w-3/4 px-4">
-        {loading ? (
-          <div className="flex items-center justify-center h-full">
-            <div className="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12"></div>
+      {stats && (
+        <div className="w-3/4 px-4 my-auto">
+          <UserInfoHeader stats={stats} />
+          <div className="flex gap-x-4 mt-4">
+            <RatingChart data={chartData} options={chartOptions} />
+            <StatsGrid stats={stats} />
           </div>
-        ) : error ? (
-          <div className="text-red-500 text-center p-4 bg-red-50 rounded-lg">
-            {error}
-          </div>
-        ) : stats ? (
-          <div className="space-y-4">
-            <UserInfoHeader stats={stats} />
-            <div className="flex gap-x-4">
-              <RatingChart data={chartData} options={chartOptions} />
-              <StatsGrid stats={stats} />
-            </div>
+          <div className="mt-4">
             <ContestTable
               contests={stats.bestContests}
               platform={stats.platform}
               title="Best Performances"
             />
           </div>
-        ) : (
-          <div className="text-center text-gray-500">
-            Select a platform to view stats.
-          </div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 };

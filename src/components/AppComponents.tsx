@@ -1,15 +1,15 @@
 import Terminal from '@/components/terminal';
 import TaskManager from '@/components/taskManager';
 import Explorer from '@/components/explorer';
-// import About from '@/components/about';
-// import Settings from '@/components/settings';
+import Settings from '@/components/settings';
+import DocumentViewer from '@/components/documentViewer';
 
 const AppComponents: { [key: string]: () => JSX.Element } = {
   terminal: Terminal,
   taskManager: TaskManager,
   explorer: Explorer,
-  // about: About,
-  // settings: Settings,
+  settings: Settings,
+  documentViewer: DocumentViewer,
 };
 
 export default AppComponents;

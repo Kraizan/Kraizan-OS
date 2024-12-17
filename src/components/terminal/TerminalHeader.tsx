@@ -4,9 +4,9 @@ interface TerminalHeaderProps {
 
 const TerminalHeader = ({ className = '' }: TerminalHeaderProps) => {
   const systemInfo = {
-    os: 'Linux',
-    kernel: '6.12.4-arch1-1',
-    shell: '/usr/bin/bash',
+    os: 'Windows 11',
+    kernel: '10.0.22621.0',
+    shell: 'powershell.exe',
     packages: '1234',
     memory: '8GB / 16GB',
     cpu: 'AMD Ryzen 7 5800X (16) @ 3.800GHz',

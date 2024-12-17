@@ -2,71 +2,70 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities {
-  @keyframes slideUp {
-    from {
-      transform: translateY(100%);
-      opacity: 0;
-    }
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
+/* Theme Variables */
+:root {
+  --primary-color: #1a1a1a;
+  --secondary-color: #2d2d2d;
+  --accent-color: #3498db;
+  --background-color: #121212;
+  --text-color: #ffffff;
+  --font-size: 16px;
+}
 
-  @keyframes slideDown {
-    from {
-      transform: translateY(0);
-      opacity: 1;
-    }
-    to {
-      transform: translateY(100%);
-      opacity: 0;
-    }
-  }
+/* Base Styles */
+body {
+  font-size: var(--font-size);
+  color: var(--text-color);
+  background-color: var(--background-color);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  transition: background-image 0.3s ease-in-out;
+}
 
-  @keyframes scaleUp {
-    from {
-      transform: scale(0.98);
-      opacity: 0;
-    }
-    to {
-      transform: scale(1);
-      opacity: 1;
-    }
+/* Global Animations */
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
   }
-
-  @keyframes scaleDown {
-    from {
-      transform: scale(1);
-      opacity: 1;
-    }
-    to {
-      transform: scale(0.98);
-      opacity: 0;
-    }
-  }
-
-  .animate-slideUp {
-    animation: slideUp 150ms ease-out forwards;
-  }
-
-  .animate-slideDown {
-    animation: slideDown 150ms ease-out forwards;
-  }
-
-  .animate-scaleUp {
-    animation: scaleUp 100ms ease-out forwards;
-  }
-
-  .animate-scaleDown {
-    animation: scaleDown 100ms ease-out forwards;
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
 }
 
-.loader {
-  border-top-color: #3498db;
-  animation: spin 1s linear infinite;
+@keyframes slideDown {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes scaleUp {
+  from {
+    transform: scale(0.98);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes scaleDown {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0.98);
+    opacity: 0;
+  }
 }
 
 @keyframes spin {
@@ -74,44 +73,63 @@
   100% { transform: rotate(360deg); }
 }
 
-/* Terminal styles */
-.bg-terminal {
-  background-color: rgba(0, 0, 0, 0.9);
+/* Animation Utility Classes */
+.animate-slideUp {
+  animation: slideUp 150ms ease-out forwards;
 }
 
-/* Terminal scrollbar styles */
-.terminal-scrollbar::-webkit-scrollbar {
+.animate-slideDown {
+  animation: slideDown 150ms ease-out forwards;
+}
+
+.animate-scaleUp {
+  animation: scaleUp 100ms ease-out forwards;
+}
+
+.animate-scaleDown {
+  animation: scaleDown 100ms ease-out forwards;
+}
+
+/* Global Transitions */
+.theme-transition {
+  transition: background-color 0.3s ease-in-out,
+              color 0.3s ease-in-out,
+              border-color 0.3s ease-in-out;
+}
+
+/* Global Scrollbar Styles */
+.custom-scrollbar::-webkit-scrollbar {
   width: 10px;
   height: 10px;
 }
 
-.terminal-scrollbar::-webkit-scrollbar-track {
+.custom-scrollbar::-webkit-scrollbar-track {
   background: rgba(31, 41, 55, 0.5);
   border-radius: 5px;
 }
 
-.terminal-scrollbar::-webkit-scrollbar-thumb {
+.custom-scrollbar::-webkit-scrollbar-thumb {
   background: rgba(75, 85, 99, 0.8);
   border-radius: 5px;
   border: 2px solid rgba(31, 41, 55, 0.5);
 }
 
-.terminal-scrollbar::-webkit-scrollbar-thumb:hover {
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: rgba(107, 114, 128, 0.8);
 }
 
-.terminal-scrollbar::-webkit-scrollbar-corner {
+.custom-scrollbar::-webkit-scrollbar-corner {
   background: transparent;
 }
 
-/* Firefox */
-.terminal-scrollbar {
+/* Firefox Scrollbar */
+.custom-scrollbar {
   scrollbar-width: thin;
   scrollbar-color: rgba(75, 85, 99, 0.8) rgba(31, 41, 55, 0.5);
 }
 
-/* Terminal text selection */
-.terminal-text::selection {
+/* Global Selection Style */
+::selection {
   background: rgba(255, 255, 255, 0.3);
   color: inherit;
 }

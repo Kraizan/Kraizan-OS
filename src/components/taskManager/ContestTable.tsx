@@ -1,3 +1,4 @@
+import { useSettings } from '@/context/SettingsContext';
 import { ContestResult } from '@/data/types/contest';
 import { getRankInfo } from '@/utils/rankInfo';
 
@@ -8,30 +9,42 @@ interface ContestTableProps {
 }
 
 const ContestTable = ({ contests, platform, title }: ContestTableProps) => {
+  const { theme } = useSettings();
   return (
-    <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-      <h3 className="text-lg font-semibold p-6 border-b">{title}</h3>
+    <div className="rounded-lg overflow-hidden theme-transition" style={{ 
+      backgroundColor: theme.primary + 'cc',
+      color: '#FFFFFF'
+    }}>
+      <h3 className="text-lg font-semibold p-6 border-b" style={{
+        borderColor: theme.secondary + '40'
+      }}>{title}</h3>
       <div className="overflow-x-auto">
         <table className="w-full">
-          <thead className="bg-gray-50">
-            <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Contest</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Rank</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Rating</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Change</th>
+          <thead>
+            <tr style={{ backgroundColor: theme.primary + 'ee' }}>
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase opacity-90">Contest</th>
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase opacity-90">Rank</th>
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase opacity-90">Rating</th>
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase opacity-90">Change</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-200">
+          <tbody className="divide-y" style={{ borderColor: theme.secondary + '40' }}>
             {contests.map((contest) => (
-              <tr key={contest.id} className="hover:bg-gray-50">
-                <td className="px-6 py-4 text-sm text-gray-900">{contest.event}</td>
-                <td className="px-6 py-4 text-sm font-medium text-blue-600">#{contest.place}</td>
+              <tr 
+                key={contest.id} 
+                className="hover:bg-opacity-50 transition-colors"
+                style={{ backgroundColor: theme.primary + '99' }}
+              >
+                <td className="px-6 py-4 text-sm">{contest.event}</td>
+                <td className="px-6 py-4 text-sm font-medium opacity-90">#{contest.place}</td>
                 <td className="px-6 py-4 text-sm font-medium">
-                  <span className={getRankInfo(contest.new_rating, platform).color}>
+                  <span style={{ color: getRankInfo(contest.new_rating, platform).color }}>
                     {contest.new_rating}
                   </span>
                 </td>
-                <td className={`px-6 py-4 text-sm ${contest.rating_change > 0 ? "text-green-500" : "text-red-500"}`}>
+                <td className={`px-6 py-4 text-sm font-medium ${
+                  contest.rating_change > 0 ? "text-green-400" : "text-red-400"
+                }`}>
                   {contest.rating_change > 0 ? "+" : ""}{contest.rating_change}
                 </td>
               </tr>
