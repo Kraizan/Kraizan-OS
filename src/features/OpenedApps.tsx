@@ -1,6 +1,6 @@
 import { useAppContext } from '@/context/AppContext';
 import { useSettings } from '@/context/SettingsContext';
-import AppComponents from '@/components/AppComponents';
+import AppComponents from '@/features/AppComponents';
 
 const OpenedApps = () => {
   const { openedApps, closeApp, minimized } = useAppContext();

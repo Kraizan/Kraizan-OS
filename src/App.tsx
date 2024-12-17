@@ -1,6 +1,6 @@
-import Taskbar from "./components/taskbar";
+import Taskbar from "./features/taskbar";
 import { AppProvider } from "@/context/AppContext";
-import OpenedApps from "@/components/OpenedApps";
+import OpenedApps from "@/features/OpenedApps";
 
 const App = () => {
   return (

@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
-import TerminalHeader from "./TerminalHeader";
-import TerminalPrompt from "./TerminalPrompt";
-import TerminalOutput from "./TerminalOutput";
+import TerminalHeader from "./components/Header";
+import TerminalPrompt from "./components/Prompt";
+import TerminalOutput from "./components/Output";
 import { useTerminalCommands } from "@/hooks/useTerminalCommands";
 
 const Terminal = () => {

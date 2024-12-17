@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import TaskbarApp from './TaskbarApp';
+import TaskbarApp from './components/TaskbarApp';
 import SkillsMenu from '../SkillsMenu';
 import { useSettings } from '@/context/SettingsContext';
 

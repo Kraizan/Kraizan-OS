@@ -16,11 +16,11 @@ import { platforms } from "@/data/platforms";
 import { getRankInfo } from "@/utils/rankInfo";
 import { getContestEndpoint, getAuthHeader } from "@/config/api";
 import { useSettings } from "@/context/SettingsContext";
-import PlatformSelector from "./PlatformSelector";
-import UserInfoHeader from "./UserInfoHeader";
-import StatsGrid from "./StatsGrid";
-import RatingChart from "./RatingChart";
-import ContestTable from "./ContestTable";
+import PlatformSelector from "./components/PlatformSelector";
+import UserInfoHeader from "./components/UserInfoHeader";
+import StatsGrid from "./components/StatsGrid";
+import RatingChart from "./components/RatingChart";
+import ContestTable from "./components/ContestTable";
 import { getCachedData, setCachedData } from "@/utils/cache";
 
 ChartJS.register(
