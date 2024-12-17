@@ -34,7 +34,6 @@ export const SettingsProvider = ({ children }: { children: ReactNode }) => {
   const [theme, setThemeState] = useState<Theme>(defaultTheme);
   const [wallpaper, setWallpaperState] = useState<string>('/assets/wallpapers/ocean.jpg');
 
-  // Load settings from localStorage on mount
   useEffect(() => {
     const savedSettings = localStorage.getItem('portfolioSettings');
     if (savedSettings) {
@@ -44,7 +43,6 @@ export const SettingsProvider = ({ children }: { children: ReactNode }) => {
     }
   }, []);
 
-  // Extract theme colors when wallpaper changes
   useEffect(() => {
     const updateThemeFromWallpaper = async () => {
       try {
@@ -63,29 +61,25 @@ export const SettingsProvider = ({ children }: { children: ReactNode }) => {
     updateThemeFromWallpaper();
   }, [wallpaper]);
 
-  // Save settings to localStorage whenever they change
   useEffect(() => {
     localStorage.setItem('portfolioSettings', JSON.stringify({
       theme,
       wallpaper
     }));
 
-    // Apply theme to document
     document.documentElement.style.setProperty('--primary-color', theme.primary + 'cc');
     document.documentElement.style.setProperty('--secondary-color', theme.secondary + 'cc');
     document.documentElement.style.setProperty('--accent-color', theme.accent);
     document.documentElement.style.setProperty('--background-color', theme.background + '99');
     document.documentElement.style.setProperty('--text-color', theme.text);
 
-    // Apply wallpaper
     document.body.style.backgroundImage = `url(${wallpaper})`;
     document.body.style.backgroundSize = 'cover';
     document.body.style.backgroundPosition = 'center';
     document.body.style.backgroundAttachment = 'fixed';
   }, [theme, wallpaper]);
 
-  const setTheme = (themeId: string) => {
-    // Theme is now automatically set from wallpaper
+  const setTheme = () => {
     console.warn('Manual theme setting is disabled. Theme is extracted from wallpaper.');
   };
 
