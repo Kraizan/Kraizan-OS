@@ -1,4 +1,8 @@
-const TerminalHeader = () => {
+interface TerminalHeaderProps {
+  className?: string;
+}
+
+const TerminalHeader = ({ className = '' }: TerminalHeaderProps) => {
   const systemInfo = {
     os: 'Linux',
     kernel: '6.12.4-arch1-1',
@@ -18,7 +22,7 @@ const TerminalHeader = () => {
   `;
 
   return (
-    <div className="p-4 border-b border-gray-700">
+    <div className={`p-4 border-b border-gray-700 ${className}`}>
       <div className="flex justify-between">
         <pre className="text-blue-500 text-xs">{asciiArt}</pre>
         <div className="text-xs space-y-1">

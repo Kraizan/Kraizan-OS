@@ -12,6 +12,13 @@ const Terminal = () => {
   const { currentPath, executeCommand } = useTerminalCommands();
   const outputRef = useRef<HTMLDivElement>(null);
 
+  const scrollToBottom = () => {
+    if (outputRef.current) {
+      const { scrollHeight, clientHeight } = outputRef.current;
+      outputRef.current.scrollTop = scrollHeight - clientHeight;
+    }
+  };
+
   const handleCommand = async (command: string) => {
     if (command.toLowerCase() === "clear") {
       setOutputHistory([]);
@@ -36,25 +43,31 @@ const Terminal = () => {
   };
 
   useEffect(() => {
-    if (outputRef.current) {
-      outputRef.current.scrollTop = outputRef.current.scrollHeight;
-    }
+    scrollToBottom();
   }, [outputHistory]);
 
+  useEffect(() => {
+    scrollToBottom();
+  }, []);
+
   return (
-    <div className="w-full h-full flex flex-col bg-terminal text-green-500 font-mono text-sm">
-      <TerminalHeader />
-      <div className="flex-1 flex flex-col">
-        <TerminalOutput outputHistory={outputHistory} />
-        <TerminalPrompt
-          currentPath={currentPath}
-          onCommand={handleCommand}
-          commandHistory={commandHistory}
-        />
-        <div
+    <div className="w-full h-full flex flex-col bg-gray-900 text-green-500 font-mono text-sm rounded-lg overflow-hidden border border-gray-700 shadow-xl">
+      <TerminalHeader className="flex-shrink-0" />
+      <div className="flex-1 min-h-0 flex flex-col">
+        <div 
           ref={outputRef}
-          className="flex-1 overflow-y-auto terminal-scrollbar"
-        ></div>
+          className="flex-1 min-h-0 overflow-y-auto terminal-scrollbar px-4 py-2"
+          style={{ scrollBehavior: 'smooth' }}
+        >
+          <TerminalOutput outputHistory={outputHistory} />
+        </div>
+        <div className="flex-shrink-0 border-t border-gray-700 bg-gray-800 bg-opacity-50">
+          <TerminalPrompt
+            currentPath={currentPath}
+            onCommand={handleCommand}
+            commandHistory={commandHistory}
+          />
+        </div>
       </div>
     </div>
   );

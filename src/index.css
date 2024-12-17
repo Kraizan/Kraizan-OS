@@ -81,20 +81,33 @@
 
 /* Terminal scrollbar styles */
 .terminal-scrollbar::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
+  height: 10px;
 }
 
 .terminal-scrollbar::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(31, 41, 55, 0.5);
+  border-radius: 5px;
 }
 
 .terminal-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: 4px;
+  background: rgba(75, 85, 99, 0.8);
+  border-radius: 5px;
+  border: 2px solid rgba(31, 41, 55, 0.5);
 }
 
 .terminal-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(107, 114, 128, 0.8);
+}
+
+.terminal-scrollbar::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Firefox */
+.terminal-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(75, 85, 99, 0.8) rgba(31, 41, 55, 0.5);
 }
 
 /* Terminal text selection */
