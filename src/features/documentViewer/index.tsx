@@ -3,7 +3,7 @@ import { useSettings } from "@/context/SettingsContext";
 import ReactMarkdown from "react-markdown";
 
 const DocumentViewer = () => {
-  const { currentDocument, closeDocument } = useAppContext();
+  const { currentDocument } = useAppContext();
   const { theme } = useSettings();
 
   if (!currentDocument) {
@@ -30,7 +30,7 @@ const DocumentViewer = () => {
       <div className="absolute w-full h-full overflow-hidden p-8">
         <div style={{ color: theme.text }}>
           <ReactMarkdown
-            className="markdown-body absolute w-[calc(100%-3rem)] h-[calc(100%-4rem)] overflow-auto"
+            className="markdown-body absolute w-[calc(100%-3rem)] h-[calc(100%-4rem)] overflow-auto pr-8 custom-scrollbar"
             children={currentDocument}
           />
         </div>

@@ -1,4 +1,5 @@
 import { GapIncContent, YogLabsContent } from '@/data/md_files/work';
+import { UniHubContent, RadiateContent, PeriodContent, OneShopContent, SecondHandContent } from '@/data/md_files/projects';
 
 interface BaseItem {
   name: string;
@@ -67,10 +68,7 @@ export const folderStructure: { root: Folder } = {
                 path: "/Home/Projects/UniHub/UniHub.md",
                 image: "/assets/file.png",
                 type: "file",
-                content: `
-# Project 1
-Details about Project 1.
-                `.trim(),
+                content: UniHubContent,
                 children: {},
               },
               "Radiate.md": {
@@ -78,10 +76,7 @@ Details about Project 1.
                 path: "/Home/Projects/Radiate/Radiate.md",
                 image: "/assets/file.png",
                 type: "file",
-                content: `
-# Project 2
-Details about Project 2.
-                `.trim(),
+                content: RadiateContent,
                 children: {},
               },
               "Period.md": {
@@ -89,10 +84,7 @@ Details about Project 2.
                 path: "/Home/Projects/Period/Period.md",
                 image: "/assets/file.png",
                 type: "file",
-                content: `
-# Project 2
-Details about Project 2.
-                `.trim(),
+                content: PeriodContent,
                 children: {},
               },
               "Ecommerce.md": {
@@ -100,10 +92,7 @@ Details about Project 2.
                 path: "/Home/Projects/Ecommerce/Ecommerce.md",
                 image: "/assets/file.png",
                 type: "file",
-                content: `
-# Project 2
-Details about Project 2.
-                `.trim(),
+                content: OneShopContent,
                 children: {},
               },
               "Second_Hand.md": {
@@ -111,23 +100,9 @@ Details about Project 2.
                 path: "/Home/Projects/Second_Hand/Second_Hand.md",
                 image: "/assets/file.png",
                 type: "file",
-                content: `
-# Project 2
-Details about Project 2.
-                `.trim(),
+                content: SecondHandContent,
                 children: {},
-              },
-              "AniSearch.md": {
-                name: "AniSearch.md",
-                path: "/Home/Projects/AniSearch/AniSearch.md",
-                image: "/assets/file.png",
-                type: "file",
-                content: `
-# Project 2
-Details about Project 2.
-                `.trim(),
-                children: {},
-              },
+              }
             },
           },
           Certificates: {
