@@ -1,5 +1,5 @@
 import { useSettings } from '@/context/SettingsContext';
-import { ContestResult } from '@/data/types/contest';
+import { ContestResult } from '@/types/contest';
 import { getRankInfo } from '@/utils/rankInfo';
 
 interface ContestTableProps {

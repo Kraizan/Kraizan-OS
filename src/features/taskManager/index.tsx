@@ -11,7 +11,7 @@ import {
   Legend,
   Filler,
 } from "chart.js";
-import { ApiResponse, PlatformStats } from "@/data/types/contest";
+import { ApiResponse, PlatformStats } from "@/types/contest";
 import { platforms } from "@/data/platforms";
 import { getRankInfo } from "@/utils/rankInfo";
 import { getContestEndpoint, getAuthHeader } from "@/config/api";

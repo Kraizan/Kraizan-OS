@@ -9,12 +9,10 @@
   --accent-color: #3498db;
   --background-color: #121212;
   --text-color: #ffffff;
-  --font-size: 16px;
 }
 
 /* Base Styles */
 body {
-  font-size: var(--font-size);
   color: var(--text-color);
   background-color: var(--background-color);
   background-size: cover;

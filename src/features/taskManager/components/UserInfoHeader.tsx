@@ -1,4 +1,4 @@
-import { PlatformStats } from '@/data/types/contest';
+import { PlatformStats } from '@/types/contest';
 import { getRankInfo } from '@/utils/rankInfo';
 import { useSettings } from '@/context/SettingsContext';
 

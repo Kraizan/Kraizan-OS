@@ -132,7 +132,7 @@ const Explorer = () => {
                     alt={item.name}
                     className="w-20 h-20 mx-auto mb-2"
                   />
-                  <p>{item.name}</p>
+                  <p className="">{item.name}</p>
                 </li>
               ))}
             </ul>

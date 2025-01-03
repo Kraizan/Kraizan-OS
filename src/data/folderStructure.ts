@@ -1,3 +1,5 @@
+import { GapIncContent, YogLabsContent } from '@/data/md_files/work';
+
 interface BaseItem {
   name: string;
   path: string;
@@ -36,15 +38,20 @@ export const folderStructure: { root: Folder } = {
             image: "/assets/work-folder.png",
             type: "folder",
             children: {
-              "Work.md": {
-                name: "Work.md",
-                path: "/Home/Work/Work.md",
+              "Gap_Inc.md": {
+                name: "Gap_Inc.md",
+                path: "/Home/Work/Gap_Inc.md",
                 image: "/assets/file.png",
                 type: "file",
-                content: `
-# Work
-Details about work experience.
-                `.trim(),
+                content: GapIncContent,
+                children: {},
+              },
+              "YogLabs.md": {
+                name: "YogLabs.md",
+                path: "/Home/Work/YogLabs.md",
+                image: "/assets/file.png",
+                type: "file",
+                content: YogLabsContent,
                 children: {},
               },
             },
@@ -55,9 +62,9 @@ Details about work experience.
             image: "/assets/code-folder.png",
             type: "folder",
             children: {
-              "Project1.md": {
-                name: "Project1.md",
-                path: "/Home/Projects/Project1/Project1.md",
+              "UniHub.md": {
+                name: "UniHub.md",
+                path: "/Home/Projects/UniHub/UniHub.md",
                 image: "/assets/file.png",
                 type: "file",
                 content: `
@@ -66,9 +73,53 @@ Details about Project 1.
                 `.trim(),
                 children: {},
               },
-              "Project2.md": {
-                name: "Project2.md",
-                path: "/Home/Projects/Project2/Project2.md",
+              "Radiate.md": {
+                name: "Radiate.md",
+                path: "/Home/Projects/Radiate/Radiate.md",
+                image: "/assets/file.png",
+                type: "file",
+                content: `
+# Project 2
+Details about Project 2.
+                `.trim(),
+                children: {},
+              },
+              "Period.md": {
+                name: "Period.md",
+                path: "/Home/Projects/Period/Period.md",
+                image: "/assets/file.png",
+                type: "file",
+                content: `
+# Project 2
+Details about Project 2.
+                `.trim(),
+                children: {},
+              },
+              "Ecommerce.md": {
+                name: "Ecommerce.md",
+                path: "/Home/Projects/Ecommerce/Ecommerce.md",
+                image: "/assets/file.png",
+                type: "file",
+                content: `
+# Project 2
+Details about Project 2.
+                `.trim(),
+                children: {},
+              },
+              "Second_Hand.md": {
+                name: "Second_Hand.md",
+                path: "/Home/Projects/Second_Hand/Second_Hand.md",
+                image: "/assets/file.png",
+                type: "file",
+                content: `
+# Project 2
+Details about Project 2.
+                `.trim(),
+                children: {},
+              },
+              "AniSearch.md": {
+                name: "AniSearch.md",
+                path: "/Home/Projects/AniSearch/AniSearch.md",
                 image: "/assets/file.png",
                 type: "file",
                 content: `
@@ -85,9 +136,20 @@ Details about Project 2.
             image: "/assets/cert-folder.png",
             type: "folder",
             children: {
-              "Certificates.md": {
-                name: "Certificates.md",
-                path: "/Home/Certificates/Certificates.md",
+              "AWS_Cloud_Essentials.md": {
+                name: "AWS_Cloud_Essentials.md",
+                path: "/Home/Certificates/AWS_Cloud_Essentials.md",
+                image: "/assets/file.png",
+                type: "file",
+                content: `
+# Certificates
+Details about certificates.
+                `.trim(),
+                children: {},
+              },
+              "Postman_Student_Expert.md": {
+                name: "Postman_Student_Expert.md",
+                path: "/Home/Certificates/Postman_Student_Expert.md",
                 image: "/assets/file.png",
                 type: "file",
                 content: `

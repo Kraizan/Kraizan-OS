@@ -38,7 +38,7 @@ export const useTerminalCommands = () => {
 
   const formatHelp = (cmd: string, desc: string) => {
     return `<div class="flex">
-      <span class="text-yellow-500 w-24 flex-shrink-0">${cmd}</span>
+      <span class="text-yellow-500 w-28 flex-shrink-0">${cmd}</span>
       <span class="text-gray-300">${desc}</span>
     </div>`;
   };
@@ -47,15 +47,15 @@ export const useTerminalCommands = () => {
     help: () => `<div class="space-y-2">
       <span class="text-blue-400 font-bold text-lg block mb-2">Available Commands:</span>
       ${formatHelp("ls", "List directory contents")}
-      ${formatHelp("cd <dir>", "Change directory")}
+      ${formatHelp("cd [dir]", "Change directory")}
       ${formatHelp("pwd", "Print working directory")}
-      ${formatHelp("cat <file>", "Display file contents")}
+      ${formatHelp("cat [file]", "Display file contents")}
       ${formatHelp("clear", "Clear the terminal screen")}
       ${formatHelp("whoami", "Display user information")}
       ${formatHelp("date", "Display current date and time")}
       ${formatHelp("skills", "List all skills and proficiencies")}
       ${formatHelp("tree", "Display directory structure as tree")}
-      ${formatHelp("echo <text>", "Display a line of text")}
+      ${formatHelp("echo [text]", "Display a line of text")}
     </div>`,
 
     pwd: () => currentPath,
