@@ -1,9 +1,8 @@
-import { FC } from 'react';
 import { skillCategories } from '@/data/skills';
 import { CategoryListProps } from '@/types/skills';
-import { SkillIcon } from '../SkillIcon';
+import SkillIcon from './SkillIcon';
 
-export const CategoryList: FC<CategoryListProps> = ({ selectedCategory, onCategorySelect, theme }) => {
+const CategoryList = ({ selectedCategory, onCategorySelect, theme }: CategoryListProps) => {
   return (
     <div className="w-1/3 border-r overflow-y-auto" style={{ 
       borderColor: theme.secondary + '40'
@@ -30,3 +29,5 @@ export const CategoryList: FC<CategoryListProps> = ({ selectedCategory, onCatego
     </div>
   );
 }; 
+
+export default CategoryList;

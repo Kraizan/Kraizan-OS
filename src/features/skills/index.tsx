@@ -1,11 +1,11 @@
-import { FC, useState } from 'react';
+import {  useState } from 'react';
 import { skillCategories } from '@/data/skills';
 import { useSettings } from '@/context/SettingsContext';
 import { SkillsMenuProps } from '@/types/skills';
-import { CategoryList } from './components/CategoryList';
-import { SkillList } from './components/SkillList';
+import CategoryList from './components/CategoryList';
+import SkillList from './components/SkillList';
 
-const SkillsMenu: FC<SkillsMenuProps> = ({ isOpen, onClose }) => {
+const SkillsMenu = ({ isOpen, onClose }: SkillsMenuProps) => {
   const [selectedCategory, setSelectedCategory] = useState(skillCategories[0].name);
   const { theme } = useSettings();
   const selectedCategoryData = skillCategories.find(

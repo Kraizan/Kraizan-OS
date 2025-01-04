@@ -48,6 +48,7 @@ const Taskbar = () => {
           <TaskbarApp appName="terminal" />
           <TaskbarApp appName="explorer" />
           <TaskbarApp appName="taskManager" />
+          <TaskbarApp appName="telegram" />
           <TaskbarApp appName="settings" />
         </div>
         <div className="self-center text-right font-medium">

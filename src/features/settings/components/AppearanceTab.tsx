@@ -1,8 +1,7 @@
-import { FC } from 'react';
 import { AppearanceTabProps } from '@/types/settings';
 import { wallpapers } from '@/context/SettingsContext';
 
-export const AppearanceTab: FC<AppearanceTabProps> = ({ theme, wallpaper, setWallpaper }) => {
+const AppearanceTab = ({ theme, wallpaper, setWallpaper }: AppearanceTabProps) => {
   return (
     <div className="app-content">
       {/* Current Theme Preview */}
@@ -63,3 +62,5 @@ export const AppearanceTab: FC<AppearanceTabProps> = ({ theme, wallpaper, setWal
     </div>
   );
 }; 
+
+export default AppearanceTab

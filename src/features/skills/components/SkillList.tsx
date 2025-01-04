@@ -1,8 +1,7 @@
-import { FC } from 'react';
 import { SkillListProps } from '@/types/skills';
-import { SkillCard } from '../SkillCard';
+import SkillCard from './SkillCard';
 
-export const SkillList: FC<SkillListProps> = ({ skills }) => {
+const SkillList = ({ skills }: SkillListProps) => {
   return (
     <div className="flex-1 p-4 overflow-y-auto">
       <div className="space-y-2">
@@ -13,3 +12,5 @@ export const SkillList: FC<SkillListProps> = ({ skills }) => {
     </div>
   );
 }; 
+
+export default SkillList;

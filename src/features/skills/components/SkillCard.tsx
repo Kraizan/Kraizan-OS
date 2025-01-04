@@ -1,9 +1,8 @@
-import { FC } from 'react';
 import { useSettings } from '@/context/SettingsContext';
 import { SkillCardProps } from '@/types/skills';
-import { SkillIcon } from '../SkillIcon';
+import SkillIcon  from './SkillIcon';
 
-export const SkillCard: FC<SkillCardProps> = ({ skill }) => {
+const SkillCard = ({ skill }: SKillCardProps) => {
   const { theme } = useSettings();
   
   return (
@@ -32,3 +31,5 @@ export const SkillCard: FC<SkillCardProps> = ({ skill }) => {
     </div>
   );
 }; 
+
+export default SkillCard;

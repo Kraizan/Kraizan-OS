@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { AboutTabProps } from '@/types/settings';
 import { APP_VERSION } from '@/constants/settings';
 
-export const AboutTab: FC<AboutTabProps> = ({ theme }) => {
+const AboutTab: FC<AboutTabProps> = ({ theme }) => {
   return (
     <div className="app-content">
       <h3 className="app-subheading" style={{ color: theme.text }}>About</h3>
@@ -14,3 +14,5 @@ export const AboutTab: FC<AboutTabProps> = ({ theme }) => {
     </div>
   );
 }; 
+
+export default AboutTab

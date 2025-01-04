@@ -1,12 +1,12 @@
-import { FC, useState } from 'react';
+import { useState } from 'react';
 import { useSettings } from '@/context/SettingsContext';
 import { TabId } from '@/types/settings';
-import { Tabs } from './components/Tabs';
-import { AppearanceTab } from './components/AppearanceTab';
-import { SystemTab } from './components/SystemTab';
-import { AboutTab } from './components/AboutTab';
+import Tabs from './components/Tabs'
+import SystemTab from './components/SystemTab'
+import AppearanceTab from './components/AppearanceTab'
+import AboutTab from './components/AboutTab'
 
-const Settings: FC = () => {
+const Settings = () => {
   const [activeTab, setActiveTab] = useState<TabId>('appearance');
   const { theme, wallpaper, setWallpaper } = useSettings();
 

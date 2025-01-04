@@ -1,7 +1,6 @@
-import { FC } from 'react';
 import { SkillIconProps } from '@/types/skills';
 
-export const SkillIcon: FC<SkillIconProps> = ({ icon, size = 'md' }) => {
+const SkillIcon = ({ icon, size = 'md' }: SkillIconProps) => {
   const sizeClass = size === 'sm' ? 'w-6 h-6' : 'w-8 h-8';
 
   if (icon.type === "svg") {
@@ -15,3 +14,5 @@ export const SkillIcon: FC<SkillIconProps> = ({ icon, size = 'md' }) => {
   }
   return <img src={icon.src} alt="skill icon" className={sizeClass} />;
 }; 
+
+export default SkillIcon;

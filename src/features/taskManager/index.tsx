@@ -155,7 +155,6 @@ const TaskManager = () => {
         ...contestHistory.map((c) => c.rating_change)
       );
 
-      // Sort contests by rank and get top 3
       const bestContests = [...contestHistory]
         .sort((a, b) => a.place - b.place)
         .slice(0, 3);
@@ -177,7 +176,6 @@ const TaskManager = () => {
         bestContests,
       };
 
-      // Cache the stats before setting state
       setCachedData(cacheKey, platformStats);
       setStats(platformStats);
       updateChartData(contestHistory);

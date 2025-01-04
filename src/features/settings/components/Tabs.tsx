@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { TabProps } from '@/types/settings';
 import { TABS } from '@/constants/settings';
 
-export const Tabs: FC<TabProps> = ({ theme, activeTab, onTabChange }) => {
+const Tabs = ({ theme, activeTab, onTabChange }: TabsProps) => {
   return (
     <div className="w-1/4 app-content theme-transition" style={{ 
       backgroundColor: theme.primary + 'cc'
@@ -31,3 +31,5 @@ export const Tabs: FC<TabProps> = ({ theme, activeTab, onTabChange }) => {
     </div>
   );
 }; 
+
+export default Tabs;

@@ -3,6 +3,7 @@ import TaskManager from '@/features/taskManager';
 import Explorer from '@/features/explorer';
 import Settings from '@/features/settings';
 import DocumentViewer from '@/features/documentViewer';
+import Telegram from '@/features/telegram';
 
 const AppComponents: { [key: string]: () => JSX.Element } = {
   terminal: Terminal,
@@ -10,6 +11,7 @@ const AppComponents: { [key: string]: () => JSX.Element } = {
   explorer: Explorer,
   settings: Settings,
   documentViewer: DocumentViewer,
+  telegram: Telegram,
 };
 
 export default AppComponents;
