@@ -1,10 +1,7 @@
 import { PlatformStats } from '@/types/contest';
 import { getRankInfo } from '@/utils/rankInfo';
 import { useSettings } from '@/context/SettingsContext';
-
-interface UserInfoHeaderProps {
-  stats: PlatformStats;
-}
+import { UserInfoHeaderProps } from '@/types/contest';
 
 const UserInfoHeader = ({ stats }: UserInfoHeaderProps) => {
   const { theme } = useSettings();

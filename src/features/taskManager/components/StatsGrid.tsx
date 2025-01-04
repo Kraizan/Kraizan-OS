@@ -1,9 +1,6 @@
 import { PlatformStats } from '@/types/contest';
 import { useSettings } from '@/context/SettingsContext';
-
-interface StatsGridProps {
-  stats: PlatformStats;
-}
+import { StatsGridProps } from '@/types/contest';
 
 const StatsGrid = ({ stats }: StatsGridProps) => {
   const { theme } = useSettings();

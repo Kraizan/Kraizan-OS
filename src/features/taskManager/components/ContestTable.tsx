@@ -1,12 +1,7 @@
 import { useSettings } from '@/context/SettingsContext';
 import { ContestResult } from '@/types/contest';
 import { getRankInfo } from '@/utils/rankInfo';
-
-interface ContestTableProps {
-  contests: ContestResult[];
-  platform: string;
-  title: string;
-}
+import { ContestTableProps } from '@/types/contest'
 
 const ContestTable = ({ contests, platform, title }: ContestTableProps) => {
   const { theme } = useSettings();

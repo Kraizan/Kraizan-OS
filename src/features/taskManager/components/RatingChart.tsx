@@ -1,11 +1,7 @@
 import { Line } from 'react-chartjs-2';
 import { ChartData, ChartOptions } from 'chart.js';
 import { useSettings } from '@/context/SettingsContext';
-
-interface RatingChartProps {
-  data: ChartData<'line'>;
-  options: ChartOptions<'line'>;
-}
+import { RatingChartProps } from '@/types/contest';
 
 const RatingChart = ({ data, options }: RatingChartProps) => {
   const { theme } = useSettings();

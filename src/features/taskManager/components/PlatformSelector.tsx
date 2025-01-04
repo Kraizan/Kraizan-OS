@@ -1,10 +1,6 @@
 import { platforms, Platform } from '@/data/platforms';
 import { useSettings } from '@/context/SettingsContext';
-
-interface PlatformSelectorProps {
-  selectedPlatform: string;
-  onPlatformSelect: (platform: string) => void;
-}
+import { PlatformSelectorProps } from '@/types/contest'
 
 const PlatformSelector = ({ selectedPlatform, onPlatformSelect }: PlatformSelectorProps) => {
   const { theme } = useSettings();

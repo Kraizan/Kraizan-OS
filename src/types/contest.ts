@@ -37,3 +37,27 @@ export interface PlatformStats {
   contestHistory: ContestResult[];
   bestContests: ContestResult[];
 } 
+
+export interface ContestTableProps {
+  contests: ContestResult[];
+  platform: string;
+  title: string;
+}
+
+export interface PlatformSelectorProps {
+  selectedPlatform: string;
+  onPlatformSelect: (platform: string) => void;
+}
+
+export interface RatingChartProps {
+  data: ChartData;
+  options: ChartOptions;
+}
+
+export interface StatsGridProps {
+  stats: PlatformStats;
+}
+
+export interface UserInfoHeaderProps {
+  stats: PlatformStats;
+}
