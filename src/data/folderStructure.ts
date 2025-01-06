@@ -1,5 +1,6 @@
 import { GapIncContent, YogLabsContent } from '@/data/md_files/work';
 import { UniHubContent, RadiateContent, PeriodContent, OneShopContent, SecondHandContent } from '@/data/md_files/projects';
+import { GDSCContent, AlgorithmusContent, IIITians_NetworkContent } from '@/data/md_files/extracurriculars';
 
 interface BaseItem {
   name: string;
@@ -105,32 +106,34 @@ export const folderStructure: { root: Folder } = {
               }
             },
           },
-          Certificates: {
-            name: "Certificates",
-            path: "/Home/Certificates",
-            image: "/assets/cert-folder.png",
+          Extracurriculars: {
+            name: "Extracurriculars",
+            path: "/Home/Extracurriculars",
+            image: "/assets/extra-folder.png",
             type: "folder",
             children: {
-              "AWS_Cloud_Essentials.md": {
-                name: "AWS_Cloud_Essentials.md",
-                path: "/Home/Certificates/AWS_Cloud_Essentials.md",
+              "GDSC.md": {
+                name: "GDSC.md",
+                path: "/Home/Extracurriculars/GDSC.md",
                 image: "/assets/file.png",
                 type: "file",
-                content: `
-# Certificates
-Details about certificates.
-                `.trim(),
+                content: GDSCContent,
                 children: {},
               },
-              "Postman_Student_Expert.md": {
-                name: "Postman_Student_Expert.md",
-                path: "/Home/Certificates/Postman_Student_Expert.md",
+              "Algorithmus.md": {
+                name: "Algorithmus.md",
+                path: "/Home/Extracurriculars/Algorithmus.md",
                 image: "/assets/file.png",
                 type: "file",
-                content: `
-# Certificates
-Details about certificates.
-                `.trim(),
+                content: AlgorithmusContent,
+                children: {},
+              },
+              "IIITians_Network.md": {
+                name: "IIITians_Network.md",
+                path: "/Home/Extracurriculars/IIITians_Network.md",
+                image: "/assets/file.png",
+                type: "file",
+                content: IIITians_NetworkContent,
                 children: {},
               },
             },
