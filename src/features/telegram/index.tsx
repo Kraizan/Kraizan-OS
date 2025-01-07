@@ -11,7 +11,7 @@ const Telegram = () => {
   const selectedUser = selectedConversation?.participants.find(participant => participant !== 'Kraizan');
 
   return (
-    <div className="w-full h-full flex theme-transition" style={{ backgroundColor: theme.background + '99' }}>
+    <div className="w-full h-full flex theme-transition" style={{ backgroundColor: theme.background + 'dd' }}>
       <div className="w-1/3 border-r border-gray-700">
         <ChatList conversations={chatHistory} onSelectChat={setSelectedChat} />
       </div>

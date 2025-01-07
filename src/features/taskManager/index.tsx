@@ -224,7 +224,7 @@ const TaskManager = () => {
       <div
         className="w-full h-full flex items-center justify-center theme-transition"
         style={{
-          backgroundColor: theme.background + "99",
+          backgroundColor: theme.background + "dd",
           color: theme.text,
         }}
       >
@@ -238,7 +238,7 @@ const TaskManager = () => {
       <div
         className="w-full h-full flex items-center justify-center theme-transition"
         style={{
-          backgroundColor: theme.background + "99",
+          backgroundColor: theme.background + "dd",
           color: theme.text,
         }}
       >
@@ -251,7 +251,7 @@ const TaskManager = () => {
     <div
       className="w-full h-full flex theme-transition"
       style={{
-        backgroundColor: theme.background + "99",
+        backgroundColor: theme.background + "dd",
       }}
     >
       <PlatformSelector

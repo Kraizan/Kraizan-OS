@@ -11,7 +11,7 @@ const DocumentViewer = () => {
       <div
         className="w-full h-full flex items-center justify-center theme-transition"
         style={{
-          backgroundColor: theme.background + "99",
+          backgroundColor: theme.background + "dd",
           color: theme.text,
         }}
       >
@@ -24,7 +24,7 @@ const DocumentViewer = () => {
     <div
       className="relative w-full h-full flex flex-col theme-transition"
       style={{
-        backgroundColor: theme.background + "99",
+        backgroundColor: theme.background + "dd",
       }}
     >
       <div className="absolute w-full h-full overflow-hidden p-8">

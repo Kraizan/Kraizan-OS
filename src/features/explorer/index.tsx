@@ -13,7 +13,7 @@ const Explorer = () => {
   if (!currentFolder) {
     return (
       <div className="w-full h-full flex theme-transition" style={{ 
-        backgroundColor: theme.background + '99',
+        backgroundColor: theme.background + 'dd',
         color: theme.text
       }}>
         Folder not found
@@ -31,7 +31,7 @@ const Explorer = () => {
 
   return (
     <div className="w-full h-full flex flex-col theme-transition" style={{ 
-      backgroundColor: theme.background + '99'
+      backgroundColor: theme.background + 'dd'
     }}>
       {/* Breadcrumb Navigation */}
       <div className="w-full flex items-center px-4 py-2 border-b theme-transition" style={{ 

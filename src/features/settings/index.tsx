@@ -1,17 +1,17 @@
 import { useState } from 'react';
 import { useSettings } from '@/context/SettingsContext';
 import { TabId } from '@/types/settings';
-import Tabs from './components/Tabs'
-import SystemTab from './components/SystemTab'
-import AppearanceTab from './components/AppearanceTab'
-import AboutTab from './components/AboutTab'
+import Tabs from './components/Tabs';
+import SystemTab from './components/SystemTab';
+import AppearanceTab from './components/AppearanceTab';
+import AboutTab from './components/AboutTab';
 
 const Settings = () => {
   const [activeTab, setActiveTab] = useState<TabId>('appearance');
   const { theme, wallpaper, setWallpaper } = useSettings();
 
   return (
-    <div className="w-full h-full max-h-[calc(100vh-110px)] flex theme-transition" style={{ backgroundColor: theme.background + '99' }}>
+    <div className="w-full h-full max-h-[calc(100vh-110px)] flex theme-transition" style={{ backgroundColor: theme.background + 'dd' }}>
       <Tabs 
         theme={theme}
         activeTab={activeTab}

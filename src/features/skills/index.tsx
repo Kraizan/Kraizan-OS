@@ -17,7 +17,7 @@ const SkillsMenu = ({ isOpen, onClose }: SkillsMenuProps) => {
       className={`fixed inset-0 flex items-center justify-center transition-opacity duration-200 ${
         isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
       }`}
-      style={{ backgroundColor: theme.background + '99' }}
+      style={{ backgroundColor: theme.background + 'dd' }}
     >
       <div className="w-[800px] bg-white rounded-lg shadow-xl overflow-hidden theme-transition" style={{ 
         backgroundColor: theme.primary + 'cc'
