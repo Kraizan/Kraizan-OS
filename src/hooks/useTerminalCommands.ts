@@ -44,19 +44,7 @@ export const useTerminalCommands = () => {
   };
 
   const commands = {
-    help: () => `<div class="space-y-2">
-      <span class="text-blue-400 font-bold text-lg block mb-2">Available Commands:</span>
-      ${formatHelp("ls", "List directory contents")}
-      ${formatHelp("cd [dir]", "Change directory")}
-      ${formatHelp("pwd", "Print working directory")}
-      ${formatHelp("cat [file]", "Display file contents")}
-      ${formatHelp("clear", "Clear the terminal screen")}
-      ${formatHelp("whoami", "Display user information")}
-      ${formatHelp("date", "Display current date and time")}
-      ${formatHelp("skills", "List all skills and proficiencies")}
-      ${formatHelp("tree", "Display directory structure as tree")}
-      ${formatHelp("echo [text]", "Display a line of text")}
-    </div>`,
+    help: () => `<div class="space-y-2"><span class="text-blue-400 font-bold text-lg block mb-2">Available Commands:</span>${formatHelp("ls", "List directory contents")}${formatHelp("cd [dir]", "Change directory")}${formatHelp("pwd", "Print working directory")}${formatHelp("cat [file]", "Display file contents")}${formatHelp("clear", "Clear the terminal screen")}${formatHelp("whoami", "Display user information")}${formatHelp("date", "Display current date and time")}${formatHelp("skills", "List all skills and proficiencies")}${formatHelp("tree", "Display directory structure as tree")}${formatHelp("echo [text]", "Display a line of text")}</div>`,
 
     pwd: () => currentPath,
 
@@ -117,15 +105,7 @@ export const useTerminalCommands = () => {
     clear: () => "CLEAR_TERMINAL",
 
     whoami:
-      () => `<div class="bg-gray-900 p-4 rounded-lg shadow-inner border border-gray-700">
-<span class="text-blue-400 font-bold">User Information</span>
-<div class="mt-2 space-y-1">
-  <div><span class="text-yellow-500">Username:</span> <span class="text-gray-300">user</span></div>
-  <div><span class="text-yellow-500">Host:</span> <span class="text-gray-300">portfolio</span></div>
-  <div><span class="text-yellow-500">Shell:</span> <span class="text-gray-300">/bin/bash</span></div>
-  <div><span class="text-yellow-500">Location:</span> <span class="text-gray-300">${currentPath}</span></div>
-</div>
-</div>`,
+      () => `<div class="bg-gray-900 p-4 rounded-lg shadow-inner border border-gray-700"><span class="text-blue-400 font-bold">User Information</span><div class="mt-2 space-y-1"><div><span class="text-yellow-500">Username:</span> <span class="text-gray-300">user</span></div><div><span class="text-yellow-500">Host:</span> <span class="text-gray-300">Kraizan</span></div><div><span class="text-yellow-500">Shell:</span> <span class="text-gray-300">/bin/bash</span></div><div><span class="text-yellow-500">Location:</span> <span class="text-gray-300">${currentPath}</span></div></div></div>`,
 
     date: () => {
       const now = new Date();
@@ -135,28 +115,16 @@ export const useTerminalCommands = () => {
     skills: () => {
       const formatSkill = (name: string, proficiency: number) => {
         const dots = "●".repeat(proficiency) + "○".repeat(5 - proficiency);
-        return `<div class="flex justify-between">
+        return `<div class="w-72 flex justify-between">
           <span class="text-gray-300">${name}</span>
           <span class="text-blue-500">${dots}</span>
         </div>`;
       };
 
-      return `<div class="space-y-4">
-        ${skillCategories
-          .map(
-            (category) => `
-          <div class="bg-gray-900 p-4 rounded-lg shadow-inner border border-gray-700">
-            <div class="text-yellow-500 font-bold mb-2">${category.name}</div>
-            <div class="space-y-1">
-              ${category.skills
+      return `<div class="space-y-4">${skillCategories.map(
+            (category) => `<div class="bg-gray-900 p-4 rounded-lg shadow-inner border border-gray-700"><div class="text-yellow-500 font-bold">${category.name}</div><div class="space-y-1">${category.skills
                 .map((skill) => formatSkill(skill.name, skill.proficiency))
-                .join("")}
-            </div>
-          </div>
-        `
-          )
-          .join("")}
-      </div>`;
+                .join("")}</div></div>`).join("")}</div>`;
     },
 
     tree: (args: string[]) => {
@@ -190,12 +158,7 @@ export const useTerminalCommands = () => {
           .join("");
       };
 
-      return `<div class="font-mono">
-        <div><span class="text-blue-500 font-bold">${
-          targetPath === "/" ? "/" : targetPath.split("/").pop()
-        }</span></div>
-        ${buildTree(node)}
-      </div>`;
+      return `<div class="font-mono"><div><span class="text-blue-500 font-bold">${targetPath === "/" ? "/" : targetPath.split("/").pop()}</span></div>${buildTree(node)}</div>`;
     },
 
     echo: (args: string[]) => {

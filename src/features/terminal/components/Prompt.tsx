@@ -43,7 +43,7 @@ const TerminalPrompt = ({ currentPath, onCommand, commandHistory }: TerminalProm
   };
 
   return (
-    <div className="p-2 flex items-center space-x-2">
+    <div className="h-12 p-2 flex items-center space-x-2">
       <span className="text-blue-500">
         user@portfolio:<span className="text-green-500">~{currentPath}</span>$
       </span>
@@ -61,4 +61,4 @@ const TerminalPrompt = ({ currentPath, onCommand, commandHistory }: TerminalProm
   );
 };
 
-export default TerminalPrompt; 
+export default TerminalPrompt;
