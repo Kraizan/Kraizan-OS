@@ -1,4 +1,3 @@
-import { PlatformStats } from '@/types/contest';
 import { getRankInfo } from '@/utils/rankInfo';
 import { useSettings } from '@/context/SettingsContext';
 import { UserInfoHeaderProps } from '@/types/contest';

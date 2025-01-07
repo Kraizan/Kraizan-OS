@@ -2,7 +2,7 @@ import { useSettings } from '@/context/SettingsContext';
 import { SkillCardProps } from '@/types/skills';
 import SkillIcon  from './SkillIcon';
 
-const SkillCard = ({ skill }: SKillCardProps) => {
+const SkillCard = ({ skill }: SkillCardProps) => {
   const { theme } = useSettings();
   
   return (

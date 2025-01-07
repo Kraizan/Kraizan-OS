@@ -41,7 +41,7 @@ const Explorer = () => {
         <button 
           onClick={goBack} 
           disabled={historyIndex === 0} 
-          className="app-button mr-2 px-2 py-1 disabled:opacity-50"
+          className="rounded-lg transition-all duration-150 hover:scale-105 active:scale-95 mr-2 px-2 py-1 disabled:opacity-50"
           style={{ 
             color: theme.text,
             backgroundColor: 'transparent'
@@ -52,7 +52,7 @@ const Explorer = () => {
         <button
           onClick={goForward}
           disabled={historyIndex === history.length - 1}
-          className="app-button mr-2 px-2 py-1 disabled:opacity-50"
+          className="rounded-lg transition-all duration-150 hover:scale-105 active:scale-95 mr-2 px-2 py-1 disabled:opacity-50"
           style={{ 
             color: theme.text,
             backgroundColor: 'transparent'
@@ -84,16 +84,16 @@ const Explorer = () => {
       {/* Explorer Content */}
       <div className="flex h-full space-x-2 px-2">
         {/* Sidebar */}
-        <div className="w-1/5 app-section" style={{ 
+        <div className="w-1/5 p-4 rounded-lg transition-all duration-150" style={{ 
           backgroundColor: theme.primary + '40'
         }}>
-          <h2 className="app-subheading" style={{ color: theme.text }}>Home</h2>
+          <h2 className="text-lg font-semibold mb-4" style={{ color: theme.text }}>Home</h2>
           <ul>
             {Object.values(folderStructure.root.children.Home.children).map(
               (folder: any) => (
                 <li
                   key={folder.path}
-                  className="app-list-item flex items-center gap-2"
+                  className="p-3 rounded-lg cursor-pointer transition-all duration-150 hover:scale-105 flex items-center gap-2"
                   style={{ 
                     color: theme.text
                   }}
@@ -112,16 +112,16 @@ const Explorer = () => {
         </div>
 
         {/* Main Content */}
-        <div className="w-4/5 flex flex-col app-section" style={{ 
+        <div className="w-4/5 flex flex-col p-4 rounded-lg transition-all duration-150" style={{ 
           backgroundColor: theme.primary + '20'
         }}>
           <div className="flex-grow">
-            <h2 className="app-subheading" style={{ color: theme.text }}>{currentFolder.name}</h2>
+            <h2 className="text-lg font-semibold mb-4" style={{ color: theme.text }}>{currentFolder.name}</h2>
             <ul className="flex flex-wrap gap-6">
               {Object.values(currentFolder.children).map((item: any) => (
                 <li
                   key={item.path}
-                  className="app-list-item text-center px-5 py-2"
+                  className="p-3 rounded-lg cursor-pointer transition-all duration-150 hover:scale-105 text-center px-5 py-2"
                   style={{ 
                     color: theme.text
                   }}

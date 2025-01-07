@@ -1,4 +1,3 @@
-import { PlatformStats } from '@/types/contest';
 import { useSettings } from '@/context/SettingsContext';
 import { StatsGridProps } from '@/types/contest';
 

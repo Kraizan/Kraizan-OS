@@ -1,5 +1,4 @@
 import { Line } from 'react-chartjs-2';
-import { ChartData, ChartOptions } from 'chart.js';
 import { useSettings } from '@/context/SettingsContext';
 import { RatingChartProps } from '@/types/contest';
 

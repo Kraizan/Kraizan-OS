@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import { SystemTabProps } from '@/types/settings';
 
 const SystemTab = ({ theme }: SystemTabProps) => {

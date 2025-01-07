@@ -6,7 +6,7 @@ const PlatformSelector = ({ selectedPlatform, onPlatformSelect }: PlatformSelect
   const { theme } = useSettings();
 
   return (
-    <div className="w-1/4 app-content theme-transition" style={{ 
+    <div className="w-1/4 p-6 space-y-8 theme-transition" style={{ 
       backgroundColor: theme.primary + 'cc'
     }}>
       <h2 className="text-2xl font-bold mb-6" style={{ color: theme.text }}>Platforms</h2>
@@ -14,7 +14,7 @@ const PlatformSelector = ({ selectedPlatform, onPlatformSelect }: PlatformSelect
         {platforms.map((platform: Platform) => (
           <li
             key={platform.name}
-            className={`app-list-item ${
+            className={`p-3 rounded-lg cursor-pointer transition-all duration-150 hover:scale-105 ${
               selectedPlatform === platform.name
                 ? "shadow-md"
                 : "hover:bg-opacity-50"

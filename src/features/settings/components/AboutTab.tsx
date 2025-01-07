@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import { AboutTabProps } from '@/types/settings';
 import { APP_VERSION } from '@/constants/settings';
 

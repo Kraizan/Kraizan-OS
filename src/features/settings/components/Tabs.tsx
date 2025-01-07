@@ -1,8 +1,7 @@
-import { FC } from 'react';
 import { TabProps } from '@/types/settings';
 import { TABS } from '@/constants/settings';
 
-const Tabs = ({ theme, activeTab, onTabChange }: TabsProps) => {
+const Tabs = ({ theme, activeTab, onTabChange }: TabProps) => {
   return (
     <div className="w-1/4 p-6 space-y-8 theme-transition" style={{ 
       backgroundColor: theme.primary + 'cc'
