@@ -21,31 +21,6 @@ body {
   transition: background-image 0.3s ease-in-out;
 }
 
-/* Common App Styles */
-.app-heading {
-  @apply text-2xl font-bold mb-6;
-}
-
-.app-subheading {
-  @apply text-lg font-semibold mb-4;
-}
-
-.app-content {
-  @apply p-6 space-y-8;
-}
-
-.app-section {
-  @apply p-4 rounded-lg transition-all duration-150;
-}
-
-.app-button {
-  @apply rounded-lg transition-all duration-150 hover:scale-105 active:scale-95;
-}
-
-.app-list-item {
-  @apply p-3 rounded-lg cursor-pointer transition-all duration-150 hover:scale-105;
-}
-
 /* Global Animations */
 @keyframes slideUp {
   from {

@@ -56,7 +56,7 @@ const Terminal = () => {
       <div className="flex-1 min-h-0 flex flex-col">
         <div 
           ref={outputRef}
-          className="flex-1 min-h-0 overflow-y-auto terminal-scrollbar px-4 py-2"
+          className="flex-1 min-h-0 overflow-y-auto custom-scrollbar px-4 py-2"
           style={{ scrollBehavior: 'smooth' }}
         >
           <TerminalOutput outputHistory={outputHistory} />

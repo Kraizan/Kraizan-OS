@@ -46,12 +46,6 @@ const Taskbar = () => {
               ? theme.accent + "40"
               : "transparent",
           }}
-          onMouseOver={(e) => {
-            e.currentTarget.style.backgroundColor = theme.accent + '20';
-          }}
-          onMouseOut={(e) => {
-            e.currentTarget.style.backgroundColor = isOpened ? theme.accent + '40' : 'transparent';
-          }}
           onClick={() => setSkillsMenuOpen(!skillsMenuOpen)}
         >
           <img src="/assets/home.png" alt="home" className="w-10 h-10" />

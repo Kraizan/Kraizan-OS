@@ -3,12 +3,12 @@ import { wallpapers } from '@/context/SettingsContext';
 
 const AppearanceTab = ({ theme, wallpaper, setWallpaper }: AppearanceTabProps) => {
   return (
-    <div className="app-content">
+    <div className="p-6 space-y-8">
       {/* Current Theme Preview */}
       <section>
-        <h3 className="app-subheading" style={{ color: theme.text }}>Current Theme</h3>
+        <h3 className="text-lg font-semibold mb-4" style={{ color: theme.text }}>Current Theme</h3>
         <div 
-          className="app-section border-2"
+          className="p-4 rounded-lg transition-all duration-150 border-2"
           style={{ 
             background: theme.primary + 'cc',
             borderColor: theme.secondary + '40'
@@ -28,21 +28,21 @@ const AppearanceTab = ({ theme, wallpaper, setWallpaper }: AppearanceTabProps) =
               )
             )}
           </div>
-          <p className="mt-4 text-sm opacity-80" style={{ color: theme.text }}>
-            Theme colors are automatically generated from the selected wallpaper.
-          </p>
         </div>
+        <p className="mt-4 text-sm opacity-80" style={{ color: theme.text }}>
+          Theme colors are automatically generated from the selected wallpaper.
+        </p>
       </section>
 
       {/* Wallpaper Section */}
       <section>
-        <h3 className="app-subheading" style={{ color: theme.text }}>Wallpaper</h3>
+        <h3 className="text-lg font-semibold mb-4" style={{ color: theme.text }}>Wallpaper</h3>
         <div className="grid grid-cols-3 gap-4">
           {wallpapers.map((w) => (
             <button
               key={w.id}
               onClick={() => setWallpaper(w.id)}
-              className="app-button relative aspect-video overflow-hidden border-2"
+              className="rounded-lg transition-all duration-150 hover:scale-105 active:scale-95 relative aspect-video overflow-hidden border-2"
               style={{ 
                 borderColor: wallpaper === w.url ? theme.accent : theme.secondary + '40'
               }}

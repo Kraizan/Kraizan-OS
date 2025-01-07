@@ -9,7 +9,7 @@ const PlatformSelector = ({ selectedPlatform, onPlatformSelect }: PlatformSelect
     <div className="w-1/4 app-content theme-transition" style={{ 
       backgroundColor: theme.primary + 'cc'
     }}>
-      <h2 className="app-heading" style={{ color: theme.text }}>Platforms</h2>
+      <h2 className="text-2xl font-bold mb-6" style={{ color: theme.text }}>Platforms</h2>
       <ul className="space-y-2">
         {platforms.map((platform: Platform) => (
           <li
