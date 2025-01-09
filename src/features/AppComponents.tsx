@@ -4,6 +4,7 @@ import Explorer from '@/features/explorer';
 import Settings from '@/features/settings';
 import DocumentViewer from '@/features/documentViewer';
 import Telegram from '@/features/telegram';
+import Quickstart from '@/features/quickstart';
 
 const AppComponents: { [key: string]: () => JSX.Element } = {
   terminal: Terminal,
@@ -12,6 +13,7 @@ const AppComponents: { [key: string]: () => JSX.Element } = {
   settings: Settings,
   documentViewer: DocumentViewer,
   telegram: Telegram,
+  quickstart: Quickstart,
 };
 
 export default AppComponents;

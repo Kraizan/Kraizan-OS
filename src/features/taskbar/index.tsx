@@ -51,6 +51,7 @@ const Taskbar = () => {
           >
             <img src="/assets/home.png" alt="home" className="w-10 h-10" />
           </div>
+          <TaskbarApp appName="quickstart" />
         </div>
         <div className="w-full mx-auto flex justify-center gap-x-2 px-0.5">
           <TaskbarApp appName="terminal" />

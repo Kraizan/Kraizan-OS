@@ -17,11 +17,15 @@ const OpenedApps = () => {
     <div className="h-full flex flex-col border m-1 theme-transition" style={{ 
       borderColor: theme.secondary + '40'
     }}>
-      <div className="flex justify-between p-1 rounded-t theme-transition" style={{ 
-        backgroundColor: theme.primary + 'cc'
+      <div className="flex justify-between items-center p-2 rounded-t theme-transition" style={{ 
+        background: theme.background + 'dd',
+        color: theme.text
       }}>
-        <div className="font-semibold" style={{ color: theme.text }}>
-          {currentApp.charAt(0).toUpperCase() + currentApp.slice(1)}
+        <div className="flex items-center space-x-2">
+          <img src={`/assets/${currentApp}.png`} alt={currentApp} className="w-6 h-6" />
+          <div className="font-semibold text-lg">
+            {currentApp.charAt(0).toUpperCase() + currentApp.slice(1)}
+          </div>
         </div>
         <button 
           onClick={closeApp} 
