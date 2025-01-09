@@ -1,3 +1,5 @@
+import { ChartData, ChartOptions } from "chart.js";
+
 export interface ContestResult {
   account_id: number;
   contest_id: number;

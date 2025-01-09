@@ -16,6 +16,8 @@ interface SettingsContextType {
   setTheme: (themeId: string) => void;
   wallpaper: string;
   setWallpaper: (wallpaperId: string) => void;
+  TABS: TabItem[];
+  APP_VERSION: string;
 }
 
 const defaultTheme: Theme = {
@@ -88,12 +90,22 @@ export const SettingsProvider = ({ children }: { children: ReactNode }) => {
     setWallpaperState(wallpaperUrl);
   };
 
+  const TABS: TabItem[] = [
+    { id: 'appearance', name: 'Appearance', icon: '🎨' },
+    { id: 'system', name: 'System', icon: '⚙️' },
+    { id: 'about', name: 'About', icon: 'ℹ️' },
+  ];
+
+  const APP_VERSION = '1.0.0';
+
   return (
     <SettingsContext.Provider value={{
       theme,
       setTheme,
       wallpaper,
       setWallpaper,
+      TABS,
+      APP_VERSION
     }}>
       {children}
     </SettingsContext.Provider>
@@ -115,4 +127,4 @@ export const wallpapers = [
   { id: 'ocean', name: 'Ocean', url: '/assets/wallpapers/ocean.jpg' },
   { id: 'city', name: 'City', url: '/assets/wallpapers/city.jpg' },
   { id: 'train', name: 'Train', url: '/assets/wallpapers/train.jpg' },
-]; 
+];

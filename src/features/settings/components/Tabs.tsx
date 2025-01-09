@@ -1,7 +1,9 @@
+import { useSettings } from '@/context/SettingsContext';
 import { TabProps } from '@/types/settings';
-import { TABS } from '@/constants/settings';
 
 const Tabs = ({ theme, activeTab, onTabChange }: TabProps) => {
+  const { TABS } = useSettings();
+
   return (
     <div className="w-1/4 p-6 space-y-8 theme-transition" style={{ 
       backgroundColor: theme.primary + 'cc'
@@ -29,6 +31,6 @@ const Tabs = ({ theme, activeTab, onTabChange }: TabProps) => {
       </ul>
     </div>
   );
-}; 
+};
 
 export default Tabs;

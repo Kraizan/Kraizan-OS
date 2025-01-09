@@ -1,7 +1,9 @@
-import { SystemTabProps } from "@/types/settings";
-import { APP_VERSION } from "@/constants/settings";
+import { useSettings } from '@/context/SettingsContext';
+import { SystemTabProps } from '@/types/settings';
 
 const SystemTab = ({ theme }: SystemTabProps) => {
+  const { APP_VERSION } = useSettings();
+
   return (
     <div className="p-6 space-y-8">
       <h3 className="text-lg font-semibold mb-4" style={{ color: theme.text }}>
