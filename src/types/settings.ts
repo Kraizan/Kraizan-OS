@@ -26,4 +26,8 @@ export interface SystemTabProps {
 
 export interface AboutTabProps {
   theme: Theme;
-} 
+}
+
+export interface ContactTabProps {
+  theme: Theme;
+}

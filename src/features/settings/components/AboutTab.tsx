@@ -1,9 +1,6 @@
-import { useSettings } from '@/context/SettingsContext';
 import { AboutTabProps } from '@/types/settings';
 
 const AboutTab = ({ theme }: AboutTabProps) => {
-  const { APP_VERSION } = useSettings();
-
   return (
     <div className="p-6 space-y-8">
       <h3 className="text-lg font-semibold mb-4" style={{ color: theme.text }}>

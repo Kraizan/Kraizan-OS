@@ -1,5 +1,6 @@
 import { createContext, useContext, ReactNode, useState, useEffect } from 'react';
 import { extractThemeFromImage } from '@/utils/colorExtractor';
+import { TabItem } from '@/types/settings';
 
 export interface Theme {
   id: string;
@@ -93,7 +94,7 @@ export const SettingsProvider = ({ children }: { children: ReactNode }) => {
   const TABS: TabItem[] = [
     { id: 'appearance', name: 'Appearance', icon: '🎨' },
     { id: 'system', name: 'System', icon: '⚙️' },
-    { id: 'about', name: 'About', icon: 'ℹ️' },
+    { id: 'about', name: 'About', icon: 'ℹ️' }
   ];
 
   const APP_VERSION = '1.0.0';

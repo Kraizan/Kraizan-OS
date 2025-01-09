@@ -9,9 +9,9 @@ const RatingChart = ({ data, options }: RatingChartProps) => {
     <div className="rounded-lg p-4 w-3/4 theme-transition" style={{ 
       backgroundColor: theme.primary + 'cc'
     }}>
-      <Line data={data} options={options} width={450} />
+      <Line data={data as any} options={options as any} width={450} />
     </div>
   );
 };
 
-export default RatingChart; 
+export default RatingChart;
