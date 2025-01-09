@@ -15,7 +15,7 @@ const SkillCard = ({ skill }: SkillCardProps) => {
         <div className="text-sm font-medium">{skill.name}</div>
         <div className="text-xs" style={{ color: theme.text + 'cc' }}>{skill.description}</div>
       </div>
-      <div className="ml-auto flex gap-1">
+      <div className="ml-auto flex items-center gap-1">
         {[...Array(5)].map((_, i) => (
           <div
             key={i}
