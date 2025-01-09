@@ -40,25 +40,39 @@ const Taskbar = () => {
         style={{ backgroundColor: theme.primary + "cc" }}
       >
         <div className="w-1/3 flex justify-start">
-          <div
-            className="self-center p-2 rounded-lg transition-all duration-150 hover:scale-[102%] active:scale-[99%] cursor-pointer"
-            style={{
-              backgroundColor: skillsMenuOpen
-                ? theme.accent + "40"
-                : "transparent",
-            }}
-            onClick={() => setSkillsMenuOpen(!skillsMenuOpen)}
-          >
-            <img src="/assets/home.png" alt="home" className="w-10 h-10" />
-          </div>
-          <TaskbarApp appName="quickstart" />
+          <Tooltip text="Home">
+            <div
+              className="self-center p-2 rounded-lg transition-all duration-150 hover:scale-[102%] active:scale-[99%] cursor-pointer"
+              style={{
+                backgroundColor: skillsMenuOpen
+                  ? theme.accent + "40"
+                  : "transparent",
+              }}
+              onClick={() => setSkillsMenuOpen(!skillsMenuOpen)}
+            >
+              <img src="/assets/home.png" alt="home" className="w-10 h-10" />
+            </div>
+          </Tooltip>
+          <Tooltip text="Quickstart">
+            <TaskbarApp appName="quickstart" />
+          </Tooltip>
         </div>
         <div className="w-full mx-auto flex justify-center gap-x-2 px-0.5">
-          <TaskbarApp appName="terminal" />
-          <TaskbarApp appName="explorer" />
-          <TaskbarApp appName="taskManager" />
-          <TaskbarApp appName="telegram" />
-          <TaskbarApp appName="settings" />
+          <Tooltip text="Terminal">
+            <TaskbarApp appName="terminal" />
+          </Tooltip>
+          <Tooltip text="File Explorer">
+            <TaskbarApp appName="explorer" />
+          </Tooltip>
+          <Tooltip text="Profile Monitor">
+            <TaskbarApp appName="taskManager" />
+          </Tooltip>
+          <Tooltip text="Telegram">
+            <TaskbarApp appName="telegram" />
+          </Tooltip>
+          <Tooltip text="Settings">
+            <TaskbarApp appName="settings" />
+          </Tooltip>
         </div>
         <div className="w-1/3 justify-end flex gap-x-2 items-center h-full">
           <Tooltip text="100% charging">

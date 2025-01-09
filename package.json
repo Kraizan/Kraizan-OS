@@ -1,8 +1,10 @@
 {
-  "name": "portfolio",
+  "name": "kraizan-os",
   "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "version": "1.0.0",
+  "description": "Kraizan OS - A modern, customizable portfolio interface designed by Vanshaj Bhatnagar.",
+  "author": "Vanshaj Bhatnagar",
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
