@@ -10,7 +10,7 @@ const Quickstart = () => {
         color: theme.text
       }}>
         <h2 className="text-3xl font-bold mb-6 text-center">Welcome to Kraizan OS</h2>
-        <p className="mb-6 text-center">This is a modern, customizable portfolio interface designed to provide a seamless and interactive experience for showcasing projects, skills, and experiences.</p>
+        <p className="mb-6 text-center">Kraizan OS is an attempt to create a unique interactive portfolio by someone who doesn't like CSS much. It provides a seamless and user-friendly experience for showcasing projects, skills, and experiences.</p>
         
         <h3 className="text-xl font-semibold mb-4">How to Use Kraizan OS:</h3>
         <ul className="list-disc list-inside space-y-2 mb-6">

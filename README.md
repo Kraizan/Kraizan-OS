@@ -1,6 +1,6 @@
 # Kraizan OS - Portfolio of Vanshaj Bhatnagar
 
-Kraizan OS is a modern, customizable portfolio interface designed by Vanshaj Bhatnagar. It provides a seamless and interactive experience for showcasing projects, skills, and experiences.
+Kraizan OS is an attempt to create a unique interactive portfolio by someone who doesn't like CSS much. It provides a seamless and user-friendly experience for showcasing projects, skills, and experiences.
 
 ## Features
 
