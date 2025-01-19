@@ -5,7 +5,7 @@ const Quickstart = () => {
 
   return (
     <div className="flex items-center justify-center h-full">
-      <div className="p-6 rounded-lg shadow-lg flex flex-col theme-transition max-w-5xl mx-auto" style={{ 
+      <div className="p-6 rounded-lg shadow-lg flex flex-col theme-transition max-w-5xl mx-auto max-h-[70vh] overflow-y-auto custom-scrollbar" style={{ 
         backgroundColor: theme.primary + 'cc',
         color: theme.text
       }}>

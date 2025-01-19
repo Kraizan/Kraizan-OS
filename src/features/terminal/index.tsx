@@ -12,13 +12,6 @@ const Terminal = () => {
   const { currentPath, executeCommand } = useTerminalCommands();
   const outputRef = useRef<HTMLDivElement>(null);
 
-  const scrollToBottom = () => {
-    if (outputRef.current) {
-      const { scrollHeight, clientHeight } = outputRef.current;
-      outputRef.current.scrollTop = scrollHeight - clientHeight;
-    }
-  };
-
   const handleCommand = async (command: string) => {
     if (command.toLowerCase() === "clear") {
       setOutputHistory([]);
@@ -43,24 +36,20 @@ const Terminal = () => {
   };
 
   useEffect(() => {
-    scrollToBottom();
+    if (outputRef.current) {
+      outputRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "end",
+        inline: "nearest",
+      });
+    }
   }, [outputHistory]);
-
-  useEffect(() => {
-    scrollToBottom();
-  }, []);
 
   return (
     <div className="w-full h-full flex flex-col bg-gray-900 text-green-500 font-mono text-sm rounded-lg overflow-hidden border border-gray-700 shadow-xl">
       <TerminalHeader className="flex-shrink-0" />
       <div className="flex-1 min-h-0 flex flex-col">
-        <div 
-          ref={outputRef}
-          className="flex-1 min-h-0 overflow-y-auto custom-scrollbar px-4 py-2"
-          style={{ scrollBehavior: 'smooth' }}
-        >
-          <TerminalOutput outputHistory={outputHistory} />
-        </div>
+        <TerminalOutput outputHistory={outputHistory} />
         <div className="flex-shrink-0 border-t border-gray-700 bg-gray-800 bg-opacity-50">
           <TerminalPrompt
             currentPath={currentPath}
